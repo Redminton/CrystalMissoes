@@ -21,21 +21,16 @@
   <p id="teste"></p>
 
   <script>
- export async function onRequest(context) {
-    // Create a prepared statement with our query
-    const ps = context.env.banco.prepare('SELECT * from Customers');
-    const data = await ps.fir   export async function onRequestGet(context) {
-     return context.env.test.fetch(context.request);
-   }
-   const testando = document.getElementById("teste");
-   testando.innerHTML = test;
-   console.log(test); st();
+    export async function onRequest(context) {
+      // Create a prepared statement with our query
+      const ps = context.env.banco.prepare('SELECT * from users');
+      const data = await ps.first();
 
-    return Response.json(data);
-  }
-  const testando = document.getElementById("teste");
-  document.body.innerHTML = testando;
-  console.log(testando);
+      return Response.json(data);
+    }
+    const testando = document.getElementById("teste");
+    document.testando.innerHTML = data;
+    console.log(testando);
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
