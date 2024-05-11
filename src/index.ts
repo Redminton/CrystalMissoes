@@ -15,6 +15,7 @@ export default {
 			)
 				.bind("Bs Beverages")
 				.all();
+			return results;
 			return Response.json(results);
 		}
 		if (pathname === "/api/horn") {
@@ -32,3 +33,7 @@ export default {
 		);
 	},
 } satisfies ExportedHandler<Env>;
+
+const testando = document.getElementById("teste");
+testando.innerHTML = results;
+console.log(results);
