@@ -1,0 +1,5 @@
+{
+    "require": {
+        "darkterminal/libsql-client-php": "^1.0"
+    }
+}

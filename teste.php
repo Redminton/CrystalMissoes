@@ -1,3 +1,27 @@
+<?php
+
+use Darkterminal\LibSQL\LibSQL;
+use Darkterminal\LibSQL\Types\HttpStatement;
+use Darkterminal\LibSQL\Types\LibSQLResult;
+
+require_once 'vendor/autoload.php';
+
+$config = [
+  'url' => getenv('TURSO_DATABASE_URL'),
+  'authToken' => getenv('TURSO_AUTH_TOKEN'),
+  'tls' => false
+];
+
+$db = new LibSQL($config);
+
+$query = HttpStatement::create(sql: 'CREATE TABLE users (id INTEGER);');
+
+$results = $db->execute(query: $query);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,7 +43,11 @@
 <body>
 
   <p id="teste"></p>
-<script src="src/index.ts"></script>
+
+
+
+
+
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

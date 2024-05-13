@@ -1,0 +1,38 @@
+{
+    "name": "darkterminal/libsql-client-php",
+    "description": "PHP client API for libSQL",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Darkterminal\\LibSQL\\": "src/"
+        },
+        "files": [
+            "src/Utils/helpers.php",
+            "src/Utils/constants.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Imam Ali Mustofa",
+            "email": "darkterminal@duck.com"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": ["./vendor/bin/build"],
+        "post-update-cmd": ["./vendor/bin/build"]
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "darkterminal/libsql-php-ext": "^1.0"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/darkterminal"
+        },
+        {
+            "type": "other",
+            "url": "https://paypal.me/lazarusalhambra"
+        }
+    ]
+}
