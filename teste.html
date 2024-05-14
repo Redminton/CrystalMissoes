@@ -24,14 +24,26 @@
   <p id="teste"></p>
 
 
-<script>import { createClient } from "@libsql/client";
+<script>
+  // Assuming this code runs in a Node.js environment
+  const { createClient } = require("@libsql/client");
 
-  const client = createClient({
-    url: process.env.TURSO_DATABASE_URL,
-    authToken: process.env.TURSO_AUTH_TOKEN,
-  });
+  async function fetchData() {
+    const client = createClient({
+      url: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    });
 
-  const result = await client.execute("SELECT * FROM elements");
+    try {
+      const result = await client.execute("SELECT * FROM elements");
+      console.log(result); // Log the result to the console
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  fetchData(); // Call the function to execute the query
+
 
   const texto = document.getElementById("teste");
   texto.innerHTML =result;
