@@ -4419,6 +4419,7 @@ var worker_default = {
         const client = buildLibsqlClient(env);
         try {
             const res = await client.execute("SELECT * FROM elements");
+            console.log(res);
             return new Response(JSON.stringify(res), {
                 status: 200,
                 headers: { "Content-Type": "application/json" }
