@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    color: #fff;
 }
 
 .form-signin {
@@ -45,3 +46,10 @@ body{
 #remember{
     color: #fff;
 }
+#rodape{
+    color: #fff;
+}
+.branco{
+    color: #fff;
+}
+
