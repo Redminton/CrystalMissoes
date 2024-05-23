@@ -4513,6 +4513,8 @@ var x = {
             try {
                 // Executa a consulta SQL para buscar todos os elementos
                 const res = await client.execute("SELECT * FROM elements");
+                console.log("Query result:", res);
+
 
                 // Converte os resultados da consulta em uma string HTML
                 let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
@@ -4522,7 +4524,6 @@ var x = {
                 for (const row of res) {
                     html += `<tr><td>${row.ID}</td><td>${row.ELEMENTNAME}</td><td>${row.ATOMICNUMBER}</td><td>${row.SYMBOL}</td></tr>`;
                 }
-
                 html += '</table></body></html>';
 
                 // Responde com os resultados em HTML
@@ -4534,7 +4535,7 @@ var x = {
                 console.error("Error executing SQL query:", error);
 
                 // Responde com uma mensagem de erro em caso de falha na consulta
-                return new Response('<h1>Internal Server Error gfgfhjvn</h1>', {
+                return new Response(`<h1>Internal Server Error</h1><pre>${error.message}</pre>`, {
                     status: 500,
                     headers: { "Content-Type": "text/html" }
                 });
