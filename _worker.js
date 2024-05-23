@@ -4503,7 +4503,7 @@ var teste = {
     },
 }
 var x = {
-    async fetch(request, env, ctx) {
+    async fetch(request, env) {
         const url = new URL(request.url);
 
         if (url.pathname.startsWith('/api/')) {
@@ -4516,11 +4516,11 @@ var x = {
 
                 // Converte os resultados da consulta em uma string HTML
                 let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
-                html += '<table border="1"><tr><th>ID</th><th>Name</th><th>Value</th></tr>';
+                html += '<table border="1"><tr><th>ID</th><th>ELEMENTNAME</th><th>ATOMICNUMBER</th><th>SYMBOL</th></tr>';
 
                 // Assume que os dados têm colunas 'id', 'name' e 'value'. Ajuste conforme necessário.
                 for (const row of res) {
-                    html += `<tr><td>${row.id}</td><td>${row.name}</td><td>${row.value}</td></tr>`;
+                    html += `<tr><td>${row.ID}</td><td>${row.ELEMENTNAME}</td><td>${row.ATOMICNUMBER}</td><td>${row.SYMBOL}</td></tr>`;
                 }
 
                 html += '</table></body></html>';
