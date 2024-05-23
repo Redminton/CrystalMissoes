@@ -4502,7 +4502,7 @@ var teste = {
         return env.ASSETS.fetch(request);
     },
 }
-var teste2 = {
+var x = {
     async fetch(request, env) {
         const url = new URL(request.url);
 
@@ -4567,6 +4567,6 @@ function buildLibsqlClient(env) {
     return createClient({ url, authToken });
 }
 export {
-    /*worker_default*/teste2 as default
+    /*worker_default*/ x as default
 };
 //# sourceMappingURL=worker.js.map
