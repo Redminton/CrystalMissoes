@@ -3,6 +3,3 @@ export async function onRequest(context) {
     const data = await ps.first();
     return data;
 }
-/*const testando = document.getElementById("teste");
-testando.innerHTML = data;
-console.log(data);*/
