@@ -4446,4 +4446,3 @@ export {
     worker_default as default
 };
 //# sourceMappingURL=worker.js.map
-return env.ASSETS.fetch(request);
