@@ -3768,7 +3768,7 @@ function openHttp(url, jwt, customFetch, protocolVersion = 2) {
 var HranaTransaction = class {
     #mode;
     #version;
-    // Promise that is resolved when the BEGIN statement completes, or `undefined` if we haven't executed the
+    // Promise that is resolved when the BEGIN statement completes, or `undefined` if we haven't executed theundef
     // BEGIN statement yet.
     #started;
     /** @private */
@@ -4527,7 +4527,7 @@ var x = {
 
                 // Itera sobre as linhas do resultado e constrói a tabela HTML
                 for (const row of rows) {
-                    html += `<tr><td>${row.ID}</td><td>${row.ELEMENTNAME}</td><td>${row.ATOMICNUMBER}</td><td>${row.SYMBOL}</td></tr>`;
+                    html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`;
                 }
 
                 html += '</table></body></html>';
@@ -4554,6 +4554,8 @@ var x = {
         return env.ASSETS.fetch(request);
     },
 };
+
+
 
 
 
