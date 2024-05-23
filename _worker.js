@@ -4503,7 +4503,7 @@ var teste = {
     },
 }
 var x = {
-    async fetch(request, env) {
+    async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
         if (url.pathname.startsWith('/api/')) {
@@ -4534,7 +4534,7 @@ var x = {
                 console.error("Error executing SQL query:", error);
 
                 // Responde com uma mensagem de erro em caso de falha na consulta
-                return new Response('<h1>Internal Server Error</h1>', {
+                return new Response('<h1>Internal Server Error gfgfhjvn</h1>', {
                     status: 500,
                     headers: { "Content-Type": "text/html" }
                 });
