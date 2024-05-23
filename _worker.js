@@ -4502,6 +4502,52 @@ var teste = {
         return env.ASSETS.fetch(request);
     },
 }
+var teste2 = {
+    async fetch(request, env) {
+        const url = new URL(request.url);
+
+        if (url.pathname.startsWith('/api/')) {
+            // Cria um cliente para interagir com o banco de dados
+            const client = buildLibsqlClient(env);
+
+            try {
+                // Executa a consulta SQL para buscar todos os elementos
+                const res = await client.execute("SELECT * FROM elements");
+
+                // Converte os resultados da consulta em uma string HTML
+                let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
+                html += '<table border="1"><tr><th>ID</th><th>Name</th><th>Value</th></tr>';
+
+                // Assume que os dados têm colunas 'id', 'name' e 'value'. Ajuste conforme necessário.
+                for (const row of res) {
+                    html += `<tr><td>${row.id}</td><td>${row.name}</td><td>${row.value}</td></tr>`;
+                }
+
+                html += '</table></body></html>';
+
+                // Responde com os resultados em HTML
+                return new Response(html, {
+                    status: 200,
+                    headers: { "Content-Type": "text/html" }
+                });
+            } catch (error) {
+                console.error("Error executing SQL query:", error);
+
+                // Responde com uma mensagem de erro em caso de falha na consulta
+                return new Response('<h1>Internal Server Error</h1>', {
+                    status: 500,
+                    headers: { "Content-Type": "text/html" }
+                });
+            }
+
+            // TODO: Adicione a lógica personalizada para /api/* aqui.
+        }
+
+        // Serve os assets estáticos para outras requisições
+        return env.ASSETS.fetch(request);
+    },
+};
+
 
 
 
@@ -4521,6 +4567,6 @@ function buildLibsqlClient(env) {
     return createClient({ url, authToken });
 }
 export {
-    /*worker_default*/teste as default
+    /*worker_default*/teste2 as default
 };
 //# sourceMappingURL=worker.js.map
