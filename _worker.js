@@ -4509,29 +4509,58 @@ var x = {
         if (url.pathname.startsWith('/api/')) {
             // Cria um cliente para interagir com o banco de dados
             const client = buildLibsqlClient(env);
-
             try {
                 // Executa a consulta SQL para buscar todos os elementos
                 const result = await client.execute("SELECT * FROM elements");
-
                 // Verifica se o resultado tem uma propriedade 'rows' que é iterável
                 if (!result.rows) {
                     throw new Error('Unexpected result format');
                 }
-
                 const rows = result.rows;
-
                 // Converte os resultados da consulta em uma string HTML
                 let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
                 html += '<table border="1"><tr><th>ID</th><th>ELEMENTNAME</th><th>ATOMICNUMBER</th><th>SYMBOL</th></tr>';
-
                 // Itera sobre as linhas do resultado e constrói a tabela HTML
                 for (const row of rows) {
                     html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`;
                 }
-
                 html += '</table></body></html>';
+                // Responde com os resultados em HTML
+                return new Response(html, {
+                    status: 200,
+                    headers: { "Content-Type": "text/html" }
+                });
+            } catch (error) {
+                console.error("Error executing SQL query:", error);
 
+                // Responde com uma mensagem de erro em caso de falha na consulta
+                return new Response('<h1>Internal Server Error</h1>', {
+                    status: 500,
+                    headers: { "Content-Type": "text/html" }
+                });
+            }
+
+         
+        }
+        if (url.pathname.startsWith('/x/')) {
+            // Cria um cliente para interagir com o banco de dados
+            const client = buildLibsqlClient(env);
+            try {
+                // Executa a consulta SQL para buscar todos os elementos
+                const result = await client.execute("SELECT * FROM teste");
+                // Verifica se o resultado tem uma propriedade 'rows' que é iterável
+                if (!result.rows) {
+                    throw new Error('Unexpected result format');
+                }
+                const rows = result.rows;
+                // Converte os resultados da consulta em uma string HTML
+                let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
+                html += '<table border="1"><tr><th>ID</th><th>testando</th></tr>';
+                // Itera sobre as linhas do resultado e constrói a tabela HTML
+                for (const row of rows) {
+                    html += `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`;
+                }
+                html += '</table></body></html>';
                 // Responde com os resultados em HTML
                 return new Response(html, {
                     status: 200,
