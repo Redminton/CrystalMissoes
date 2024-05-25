@@ -4659,11 +4659,6 @@ var x2 = {
                 }
             }
         }
-
-        return new Response('<h1>Not Found</h1>', {
-            status: 404,
-            headers: { "Content-Type": "text/html" }
-        });
         return env.ASSETS.fetch(request);
     }
     
