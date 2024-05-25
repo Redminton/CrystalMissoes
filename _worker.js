@@ -4607,7 +4607,7 @@ var x2 = {
         const url = new URL(request.url);
         const client = buildLibsqlClient(env);
 
-        if (url.pathname.startsWith('/api/')) {
+        if (url.pathname.startsWith('/teste/')) {
             if (request.method === 'GET') {
                 try {
                     const result = await client.execute("SELECT * FROM elements");
