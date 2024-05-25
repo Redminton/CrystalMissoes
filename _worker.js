@@ -4627,7 +4627,7 @@ var x2 = {
                     });
                 } catch (error) {
                     console.error("Error executing SQL query:", error);
-                    return new Response('<h1>Internal Server Error</h1>', {
+                    return new Response('<h1>Internal Server Error GET</h1>', {
                         status: 500,
                         headers: { "Content-Type": "text/html" }
                     });
@@ -4652,7 +4652,7 @@ var x2 = {
                     });
                 } catch (error) {
                     console.error("Error inserting data into SQL:", error);
-                    return new Response('<h1>Internal Server Error</h1>', {
+                    return new Response('<h1>Internal Server Error POST</h1>', {
                         status: 500,
                         headers: { "Content-Type": "text/html" }
                     });
