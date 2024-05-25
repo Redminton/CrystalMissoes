@@ -4459,8 +4459,7 @@ function _createClient3(config) {
 
 // src/worker.ts
 var worker_default = {
-    async fetch(request, env, ctx) 
-    {
+    async fetch(request, env, ctx) {
         const client = buildLibsqlClient(env);
         try {
             const res = await client.execute("SELECT * FROM elements");
@@ -4495,7 +4494,7 @@ var teste = {
                 });
             }
             // TODO: Add your custom /api/* logic here.
-           
+
         }
         // Otherwise, serve the static assets.
         // Without this, the Worker will error and no assets will be served.
@@ -4540,7 +4539,7 @@ var x = {
                 });
             }
 
-         
+
         }
 
 
@@ -4569,8 +4568,10 @@ var x = {
 
 
 
-                
-                let html = '<html lang = "pt-br" ><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Crystal Missões</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><link href="css/cssindex.css" rel="stylesheet"></head><body>';
+
+                let html = '<html lang = "pt-br" >'
+                html += '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
+                html += '<title>Crystal Missões</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><link href="css/cssindex.css" rel="stylesheet"></head><body>';
                 html += '<table border="1"><tr><th>ID</th><th>testando</th></tr>';
                 // Itera sobre as linhas do resultado e constrói a tabela HTML
                 for (const row of rows) {
@@ -4595,12 +4596,78 @@ var x = {
             // TODO: Adicione a lógica personalizada para /api/* aqui.
         }
 
+
         // Serve os assets estáticos para outras requisições
         return env.ASSETS.fetch(request);
     },
 };
 
+var x2 = {
+    async fetch(request, env) {
+        const url = new URL(request.url);
+        const client = buildLibsqlClient(env);
 
+        if (url.pathname.startsWith('/api/')) {
+            if (request.method === 'GET') {
+                try {
+                    const result = await client.execute("SELECT * FROM elements");
+                    if (!result.rows) {
+                        throw new Error('Unexpected result format');
+                    }
+                    const rows = result.rows;
+                    let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
+                    html += '<table border="1"><tr><th>ID</th><th>ELEMENTNAME</th><th>ATOMICNUMBER</th><th>SYMBOL</th></tr>';
+                    for (const row of rows) {
+                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`;
+                    }
+                    html += '</table></body></html>';
+                    return new Response(html, {
+                        status: 200,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                } catch (error) {
+                    console.error("Error executing SQL query:", error);
+                    return new Response('<h1>Internal Server Error</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
+            } else if (request.method === 'POST') {
+                try {
+                    const formData = await request.formData();
+                    const id = formData.get('id');
+                    const elementName = formData.get('elementName');
+                    const atomicNumber = formData.get('atomicNumber');
+                    const symbol = formData.get('symbol');
+
+                    const insertQuery = `
+                        INSERT INTO elements (id, elementName, atomicNumber, symbol)
+                        VALUES (?, ?, ?, ?)
+                    `;
+                    await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
+
+                    return new Response('<h1>Elemento inserido com sucesso!</h1>', {
+                        status: 200,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                } catch (error) {
+                    console.error("Error inserting data into SQL:", error);
+                    return new Response('<h1>Internal Server Error</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
+            }
+        }
+
+        return new Response('<h1>Not Found</h1>', {
+            status: 404,
+            headers: { "Content-Type": "text/html" }
+        });
+        return env.ASSETS.fetch(request);
+    }
+    
+};
 
 
 
