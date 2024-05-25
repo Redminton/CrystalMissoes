@@ -4620,7 +4620,10 @@ var x2 = {
                     for (const row of rows) {
                         html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`;
                     }
-                    html += '</table></body></html>';
+                    html +return new Response('<h1>Not Found</h1>', {
+                        status: 404,
+                        headers: { "Content-Type": "text/html" }
+                    }); = '</table></body></html>';
                     return new Response(html, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
@@ -4684,6 +4687,6 @@ function buildLibsqlClient(env) {
     return createClient({ url, authToken });
 }
 export {
-    /*worker_default*/ x as default
+    /*worker_default*/ x2 as default
 };
 //# sourceMappingURL=worker.js.map
