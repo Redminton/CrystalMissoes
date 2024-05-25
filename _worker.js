@@ -4640,8 +4640,11 @@ var x2 = {
                     const atomicNumber = formData.get('atomicNumber');
                     const symbol = formData.get('symbol');
 
+                    console.log("Received form data:", { id, elementName, atomicNumber, symbol });
+
+
                     const insertQuery = `
-                        INSERT INTO elements (id, elementName, atomicNumber, symbol)
+                        INSERT INTO elements (ID, ELEMENTNUMBER, ATOMICNUMBER, SYMBOL)
                         VALUES (?, ?, ?, ?)
                     `;
                     await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
