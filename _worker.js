@@ -4597,63 +4597,7 @@ var x = {
         }
 
 
-        if (url.pathname.startsWith('/teste/')) {
-            if (request.method === 'GET') {
-                const client = buildLibsqlClient(env);
-                try {
-                    const result = await client.execute("SELECT * FROM elements");
-                    if (!result.rows) {
-                        throw new Error('Unexpected result format');
-                    }
-                    const rows = result.rows;
-                    let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
-                    html += '<table border="1"><tr><th>ID</th><th>ELEMENTNAME</th><th>ATOMICNUMBER</th><th>SYMBOL</th></tr>';
-                    for (const row of rows) {
-                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`;
-                    }
-                    html += '</table></body></html>';
-                    return new Response(html, {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                } catch (error) {
-                    console.error("Error executing SQL query:", error);
-                    return new Response('<h1>Internal Server Error GET</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
-            } else if (request.method === 'POST') {
-                try {
-                    const client = buildLibsqlClient(env);
-                    const formData = await request.formData();
-                    const id = formData.get('id');
-                    const elementName = formData.get('elementName');
-                    const atomicNumber = formData.get('atomicNumber');
-                    const symbol = formData.get('symbol');
-
-                    console.log("Received form data:", { id, elementName, atomicNumber, symbol });
-
-
-                    const insertQuery = `
-                        INSERT INTO elements (ID, ELEMENTNAME, ATOMICNUMBER, SYMBOL)
-                        VALUES (?, ?, ?, ?)
-                    `;
-                    await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
-
-                    return new Response('<h1>Elemento inserido com sucesso!</h1>', {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                } catch (error) {
-                    console.error("Error inserting data into SQL:", error);
-                    return new Response('<h1>Internal Server Error POST</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
-            }
-        }
+    
 
         if (url.pathname.startsWith('/teste/')) {
             if (request.method === 'GET') {
@@ -4697,14 +4641,9 @@ var x = {
                     console.log("atomicNumber:", atomicNumber);
                     console.log("symbol:", symbol);
 
-                    // Verifica se todos os valores foram recuperados corretamente
 
 
-
-                    const insertQuery = `
-                INSERT INTO elements (ID, ELEMENTNAME, ATOMICNUMBER, SYMBOL)
-                VALUES (?, ?, ?, ?);
-            `;
+                    const insertQuery = "INSERT INTO elements (ID, ELEMENTNAME, ATOMICNUMBER, SYMBOL) VALUES (?, ?, ?, ?);";
                     await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
 
                     return new Response('<h1>Elemento inserido com sucesso!</h1>', {
@@ -4735,7 +4674,7 @@ var x = {
     },
 };
 
-var x2 = {
+/*var x2 = {
     async fetch(request, env) {
         const url = new URL(request.url);
         const client = buildClient(env);
@@ -4779,7 +4718,7 @@ var x2 = {
 
 
                     const insertQuery = "INSERT INTO elements (ID, ELEMENTNUMBER, ATOMICNUMBER, SYMBOL) VALUES (?, ?, ?, ?)";
-                    await client.exec(insertQuery, [id, elementName, atomicNumber, symbol]);
+                    await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
 
                     return new Response('<h1>Elemento inserido com sucesso!</h1>', {
                         status: 200,
@@ -4797,7 +4736,7 @@ var x2 = {
         return env.ASSETS.fetch(request);
     }
 
-};
+}; */
 
 
 
