@@ -4767,11 +4767,16 @@ var x2 = {
                 }
             } else if (request.method === 'POST') {
                 try {
-                    const formData = await request.formData();
+                   /* const formData = await request.formData();
                     const id = formData.get('id');
                     const elementName = formData.get('elementName');
                     const atomicNumber = formData.get('atomicNumber');
                     const symbol = formData.get('symbol');
+                    */
+                   const id =11;
+                    const elementName = 'Cooper';
+                    const atomicNumber = 25;
+                    const symbol = 'CU';
 
                     console.log("Received form data:", { id, elementName, atomicNumber, symbol });
 
