@@ -4643,9 +4643,9 @@ var x = {
 
 
 
-                    const insertQuery = "INSERT INTO elements (ID, ELEMENTNAME, ATOMICNUMBER, SYMBOL) VALUES (?, ?, ?, ?);";
-                    await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
-
+                    const insertQuery = 'INSERT INTO elements (ID, ELEMENTNAME, ATOMICNUMBER, SYMBOL) VALUES (id, elementName, atomicNumber, symbol);';
+                   // await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
+                    await client.execute(insertQuery);
                     return new Response('<h1>Elemento inserido com sucesso!</h1>', {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
