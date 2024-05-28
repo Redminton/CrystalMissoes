@@ -4599,6 +4599,7 @@ var x = {
 
         if (url.pathname.startsWith('/teste/')) {
             if (request.method === 'GET') {
+                const client = buildLibsqlClient(env);
                 try {
                     const result = await client.execute("SELECT * FROM elements");
                     if (!result.rows) {
@@ -4624,6 +4625,7 @@ var x = {
                 }
             } else if (request.method === 'POST') {
                 try {
+                    const client = buildLibsqlClient(env);
                     const formData = await request.formData();
                     const id = formData.get('id');
                     const elementName = formData.get('elementName');
@@ -4660,7 +4662,7 @@ var x = {
 
 
 
-        
+
 
 
         // Serve os assets estáticos para outras requisições
@@ -4730,7 +4732,7 @@ var x2 = {
         }
         return env.ASSETS.fetch(request);
     }
-    
+
 };
 
 
