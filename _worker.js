@@ -4636,7 +4636,7 @@ var x = {
 
 
                     const insertQuery = `
-                        INSERT INTO elements (ID, ELEMENTNUMBER, ATOMICNUMBER, SYMBOL)
+                        INSERT INTO elements (ID, ELEMENTNAME ATOMICNUMBER, SYMBOL)
                         VALUES (?, ?, ?, ?)
                     `;
                     await client.execute(insertQuery, [id, elementName, atomicNumber, symbol]);
