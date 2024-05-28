@@ -4691,6 +4691,15 @@ if (url.pathname.startsWith('/teste/')) {
             const atomicNumber = formData.get('atomicNumber');
             const symbol = formData.get('symbol');
 
+            console.log("Received form data:");
+            console.log("id:", id);
+            console.log("elementName:", elementName);
+            console.log("atomicNumber:", atomicNumber);
+            console.log("symbol:", symbol);
+
+            // Verifica se todos os valores foram recuperados corretamente
+           
+
             console.log("Received form data:", { id, elementName, atomicNumber, symbol });
 
             const insertQuery = `
