@@ -4551,7 +4551,7 @@ var x = {
                 html += '<table border="1"><tr><th>ID</th><th>Tipo</th><th>Chave</th></tr>';
                 // Itera sobre as linhas do resultado e constrói a tabela HTML
                 for (const row of rows) {
-                    html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[3]}</td></tr>`;
+                    html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`;
                 }
                 html += '</table></body></html>';
                 // Responde com os resultados em HTML
