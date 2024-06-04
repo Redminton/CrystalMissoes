@@ -4457,7 +4457,6 @@ function _createClient3(config) {
 
 
 
-// src/worker.ts
 var worker_default = {
     async fetch(request, env, ctx) {
         const client = buildLibsqlClient(env);
@@ -4584,7 +4583,8 @@ var x = {
 
                         throw new Error('Unexpected result format');
                     }
-                    /*const rows = result.rows;
+                    const rows = result.rows;
+                    /*
                     let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
                     html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
                     html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
