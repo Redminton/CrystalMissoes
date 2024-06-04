@@ -4456,25 +4456,8 @@ function _createClient3(config) {
 
 
 
-function y(){
-var y = {
-    async fetch(request, env, ctx) {
-        const client = buildLibsqlClient(env);
-        try {
-            const res = await client.execute("SELECT * FROM elements");
-            return new Response(JSON.stringify(res), {
-                status: 200,
-                headers: { "Content-Type": "application/json" }
-            });
-        } catch (error) {
-            console.error("Error executing SQL query:", error);
-            return new Response(JSON.stringify({ error: "Internal Server Error" }), {
-                status: 500
-            });
-        }
-    }
-};
-}
+
+
 
 var x = {
     async fetch(request, env, ctx) {
