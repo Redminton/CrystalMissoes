@@ -4587,12 +4587,12 @@ var x = {
                     const rows = result.rows;
                     let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
                     html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
-                    html += '<th>Descrição</th><th>Categoria</th><th>Preço</th>'
+                    html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
                     html += '<th>quantidade</th></tr>';
                     for (const row of rows) {
-                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}
-                        </td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td>
-                        <td>${row[6]}</td></tr>`;
+                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}
+                        </td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
+                        </tr>`;
                     }
                     html += '</table></body></html>';
                     return new Response(html, {
