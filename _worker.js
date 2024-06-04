@@ -4456,8 +4456,8 @@ function _createClient3(config) {
 
 
 
-
-var worker_default = {
+function y(){
+var y = {
     async fetch(request, env, ctx) {
         const client = buildLibsqlClient(env);
         try {
@@ -4474,10 +4474,10 @@ var worker_default = {
         }
     }
 };
-
+}
 
 var x = {
-    async fetch(request, env) {
+    async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
         if (url.pathname.startsWith('/api/')) {
