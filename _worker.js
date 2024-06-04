@@ -4607,10 +4607,6 @@ var x = {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
                     });
-                    return new Response(html, {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
                 } catch (error) {
                     console.error("Error executing SQL query:", error);
                     return new Response('<h1>Internal Server Error GET</h1>', {
