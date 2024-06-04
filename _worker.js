@@ -4496,11 +4496,52 @@ var x = {
                     headers: { "Content-Type": "text/html" }
                 });
             }
-
-
         }
 
+        if (url.pathname.startsWith('/produtos/')) {
+            // Cria um cliente para interagir com o banco de dados
+            const client = buildLibsqlClient(env);
+            try {
+                // Executa a consulta SQL para buscar todos os produtos
+                const result = await client.execute("SELECT * FROM Produtos");
+                // Verifica se o resultado tem uma propriedade 'rows' que é iterável
+                if (!result.rows) {
+                    throw new Error('Unexpected result format');
+                }
+                const rows = result.rows;
+                // Converte os resultados da consulta em uma string HTML
+                let html = '<!DOCTYPE html><html><head><title>Produtos</title></head><body>';
+                html += '<div class="d-flex justify-content-center">';
+                // Itera sobre as linhas do resultado e constrói a tabela HTML
+                for (const row of rows) {
+                    html += `<div class="card m-3" style="width: 25%;">
+                <img src="imagens/${row[6]}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">${row[1]}</h4>
+                    <h5>R$ ${row[4]} <span style="font-size: smaller; color: red;">10x de R$ ${row[4] / 10}</span></h5>
+                    <p id="menor" class="card-text">${row[5]}</p>
+                    <div class="text-center">
+                    <a href="produtoInfo.html?id=${row[0]}" class=" btn btn-primary">Mais Informações</a>
+                    </div>
+                </div>
+            </div>`;
+                }
+                html += '</div></body></html>';
+                // Responde com os resultados em HTML
+                return new Response(html, {
+                    status: 200,
+                    headers: { "Content-Type": "text/html" }
+                });
+            } catch (error) {
+                console.error("Error executing SQL query:", error);
 
+                // Responde com uma mensagem de erro em caso de falha na consulta
+                return new Response('<h1>Internal Server Error</h1>', {
+                    status: 500,
+                    headers: { "Content-Type": "text/html" }
+                });
+            }
+        }
 
 
 
@@ -4555,7 +4596,7 @@ var x = {
         }
 
 
-    
+
 
         if (url.pathname.startsWith('/teste/')) {
             if (request.method === 'GET') {
@@ -4567,7 +4608,7 @@ var x = {
                         throw new Error('Unexpected result format');
                     }
                     const rows = result.rows;
-                    
+
                     let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
                     html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
                     html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
@@ -4578,9 +4619,9 @@ var x = {
                         </tr>`;
                     }
                     html += '</table></body></html>';
-                    
-                  
-                   
+
+
+
                     return new Response(html, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
