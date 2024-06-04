@@ -4476,31 +4476,7 @@ var worker_default = {
     }
 };
 
-var teste = {
-    async fetch(request, env) {
-        const url = new URL(request.url);
-        if (url.pathname.startsWith('/api/')) {
-            const client = buildLibsqlClient(env);
-            try {
-                const res = await client.execute("SELECT * FROM elements");
-                return new Response(JSON.stringify(res), {
-                    status: 200,
-                    headers: { "Content-Type": "application/json" }
-                });
-            } catch (error) {
-                console.error("Error executing SQL query:", error);
-                return new Response(JSON.stringify({ error: "Internal Server Error" }), {
-                    status: 500
-                });
-            }
-            // TODO: Add your custom /api/* logic here.
 
-        }
-        // Otherwise, serve the static assets.
-        // Without this, the Worker will error and no assets will be served.
-        return env.ASSETS.fetch(request);
-    },
-}
 var x = {
     async fetch(request, env) {
         const url = new URL(request.url);
