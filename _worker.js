@@ -4599,7 +4599,7 @@ var x = {
                   
                     const fs = require('fs');
                     const templateHtml = fs.readFileSync('teste.html', 'utf8');
-                    const html = templateHtml.replace('{{#rows}}', '').replace('{{/rows}}', '');
+                    let html = templateHtml.replace('{{#rows}}', '').replace('{{/rows}}', '');
                     for (const row of result.rows) {
                         html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td></tr>`;
                     }
