@@ -4551,12 +4551,12 @@ var x = {
 
 
 
-        if (url.pathname.startsWith('/x/')) {
+        if (url.pathname.startsWith('/chaves/')) {
             // Cria um cliente para interagir com o banco de dados
             const client = buildLibsqlClient(env);
             try {
                 // Executa a consulta SQL para buscar todos os elementos
-                const result = await client.execute("SELECT * FROM teste");
+                const result = await client.execute("SELECT * FROM credencial");
                 // Verifica se o resultado tem uma propriedade 'rows' que é iterável
                 if (!result.rows) {
                     throw new Error('Unexpected result format');
@@ -4572,10 +4572,10 @@ var x = {
                 let html = '<html lang = "pt-br" >'
                 html += '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
                 html += '<title>Crystal Missões</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><link href="css/cssindex.css" rel="stylesheet"></head><body>';
-                html += '<table border="1"><tr><th>ID</th><th>testando</th></tr>';
+                html += '<table border="1"><tr><th>ID</th><th>Tipo</th><th>Chave</th></tr>';
                 // Itera sobre as linhas do resultado e constrói a tabela HTML
                 for (const row of rows) {
-                    html += `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`;
+                    html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[3]}</td></tr>`;
                 }
                 html += '</table></body></html>';
                 // Responde com os resultados em HTML
@@ -4603,16 +4603,20 @@ var x = {
             if (request.method === 'GET') {
                 const client = buildLibsqlClient(env);
                 try {
-                    const result = await client.execute("SELECT * FROM elements");
+                    const result = await client.execute("SELECT * FROM Produtos");
                     if (!Array.isArray(result.rows)) {
 
                         throw new Error('Unexpected result format');
                     }
                     const rows = result.rows;
                     let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
-                    html += '<table border="1"><tr><th>ID</th><th>ELEMENTNAME</th><th>ATOMICNUMBER</th><th>SYMBOL</th></tr>';
+                    html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
+                    html += '<th>Descrição</th><th>Categoria</th><th>Preço</th>'
+                    html += '<th>quantidade</th></tr>';
                     for (const row of rows) {
-                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`;
+                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}
+                        </td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td>
+                        <td>${row[6]}</td></tr>`;
                     }
                     html += '</table></body></html>';
                     return new Response(html, {
