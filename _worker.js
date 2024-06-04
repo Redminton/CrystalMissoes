@@ -4584,7 +4584,7 @@ var x = {
                         throw new Error('Unexpected result format');
                     }
                     const rows = result.rows;
-                    /*
+                    
                     let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
                     html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
                     html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
@@ -4595,14 +4595,9 @@ var x = {
                         </tr>`;
                     }
                     html += '</table></body></html>';
-                    */
+                    
                   
-                    const fs = require('fs');
-                    const templateHtml = fs.readFileSync('teste.html', 'utf8');
-                    let html = templateHtml.replace('{{#rows}}', '').replace('{{/rows}}', '');
-                    for (const row of result.rows) {
-                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td></tr>`;
-                    }
+                   
                     return new Response(html, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
