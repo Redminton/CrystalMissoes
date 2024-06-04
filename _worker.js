@@ -4463,42 +4463,7 @@ var x = {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
-        if (url.pathname.startsWith('/api/')) {
-            // Cria um cliente para interagir com o banco de dados
-            const client = buildLibsqlClient(env);
-            try {
-                // Executa a consulta SQL para buscar todos os elementos
-                const result = await client.execute("SELECT * FROM elements");
-                // Verifica se o resultado tem uma propriedade 'rows' que é iterável
-                if (!result.rows) {
-                    throw new Error('Unexpected result format');
-                }
-                const rows = result.rows;
-                // Converte os resultados da consulta em uma string HTML
-                let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
-                html += '<table border="1"><tr><th>ID</th><th>ELEMENTNAME</th><th>ATOMICNUMBER</th><th>SYMBOL</th></tr>';
-                // Itera sobre as linhas do resultado e constrói a tabela HTML
-                for (const row of rows) {
-                    html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`;
-                }
-                html += '</table></body></html>';
-                // Responde com os resultados em HTML
-                return new Response(html, {
-                    status: 200,
-                    headers: { "Content-Type": "text/html" }
-                });
-            } catch (error) {
-                console.error("Error executing SQL query:", error);
-
-                // Responde com uma mensagem de erro em caso de falha na consulta
-                return new Response('<h1>Internal Server Error</h1>', {
-                    status: 500,
-                    headers: { "Content-Type": "text/html" }
-                });
-            }
-        }
-
-
+    
 
         if (url.pathname.startsWith('/produtos/')) {
             // Cria um cliente para interagir com o banco de dados
@@ -4553,6 +4518,40 @@ var x = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (url.pathname.startsWith('/chaves/')) {
             // Cria um cliente para interagir com o banco de dados
             const client = buildLibsqlClient(env);
@@ -4564,13 +4563,7 @@ var x = {
                     throw new Error('Unexpected result format');
                 }
                 const rows = result.rows;
-                // Converte os resultados da consulta em uma string HTML
-
-
-
-
-
-
+                
                 let html = '<html lang = "pt-br" >'
                 html += '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
                 html += '<title>Crystal Missões</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><link href="css/cssindex.css" rel="stylesheet"></head><body>';
