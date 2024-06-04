@@ -4518,7 +4518,7 @@ var x = {
                 html += '<div class="d-flex justify-content-center">';
                 for (const row of rows) {
                     html += `<div class="card m-3" style="width: 25%;">
-                <img src="${row[6]}" class="card-img-top" alt="...">
+                <img src="../imagens/${row[6]}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title">${row[1]}</h4>
                     <h5>R$ ${row[4]} <span style="font-size: smaller; color: red;">10x de R$ ${row[4] / 10}</span></h5>
