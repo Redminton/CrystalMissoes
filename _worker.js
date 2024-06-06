@@ -4500,7 +4500,7 @@ var x = {
                 html += '<button onclick="window.location.href=\'login.html\'" type="button" class="btn btn-warning">MinhaConta</button> </div></div>';
                 html += '<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">';
                 html += '<ul class="nav nav-underline justify-content-center">';
-                html += '<li class="nav-item"><a class="nav-link text-white" aria-current="page" href="https://redminton.cloud"></a>Promoções</li>';
+               // html += '<li class="nav-item"><a class="nav-link text-white" aria-current="page" href="https://redminton.cloud"></a>Promoções</li>';
                 html += '<li class="nav-item"><a class="nav-link text-white" href="https://redminton.cloud/produtos/">Colares</a></li>';
                 html += '<li class="nav-item"><a class="nav-link text-white" href="https://redminton.cloud/chaves/">Anéis</a></li>';
                 html += '<li class="nav-item"><a class="nav-link text-white" href="#">Brincos</a></li>';
