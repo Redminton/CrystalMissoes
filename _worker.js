@@ -4707,6 +4707,6 @@ function buildLibsqlClient(env) {
     return createClient({ url, authToken });
 }
 export {
-    /*worker_default */x as default
+    x as default
 };
 //# sourceMappingURL=worker.js.map
