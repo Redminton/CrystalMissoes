@@ -4511,7 +4511,7 @@ var x = {
                 </ul></div></div></header>
                                 <div class="d-flex justify-content-center">`;
                 for (const row of rows) {
-                    html += `<div class="row"><div class="col-md-d"><div class="card m-3" style="width: 25%;">
+                    html += `<div class="row"><div class="col-md-4"><div class="card m-3" style="width: 25%;">
                 <img src="../imagens/${row[6]}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title">${row[1]}</h4>
