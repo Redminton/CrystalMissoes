@@ -4482,7 +4482,7 @@ var x = {
                 html += '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity = "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin = "anonymous" ><link href="../css/cssindex.css" rel="stylesheet"></head><body>';
                 html += '<div class="container"><header class="p-3">';
                 html += '<div class="container">';
-                html += '<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"><a href="https://redminton.cloud" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">':
+                html += '<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"><a href="https://redminton.cloud" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">';
                 html += '<div class="bi me-2" role="img" aria-label="Bootstrap">';
                 html += '<img src="imagens/Crystal Missões (2).png" width="300rem" />';
                 html += '</div>';
