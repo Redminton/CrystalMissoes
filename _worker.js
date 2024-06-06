@@ -4463,7 +4463,7 @@ var x = {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
-    
+
 
         if (url.pathname.startsWith('/produtos/')) {
             // Cria um cliente para interagir com o banco de dados
@@ -4495,7 +4495,7 @@ var x = {
             </div>`;
                 }
                 html += '</div>'
-                html += ' <script src="js/jquery.min.js"></script>< script src = "js/bootstrap.min.js" ></script ></body></html>';
+                html += '<script src="js/jquery.min.js"></script><script src = "js/bootstrap.min.js"></script ></body></html>';
                 // Responde com os resultados em HTML
                 return new Response(html, {
                     status: 200,
@@ -4564,7 +4564,7 @@ var x = {
                     throw new Error('Unexpected result format');
                 }
                 const rows = result.rows;
-                
+
                 let html = '<html lang = "pt-br" >'
                 html += '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">'
                 html += '<title>Crystal Missões</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><link href="css/cssindex.css" rel="stylesheet"></head><body>';
@@ -4634,22 +4634,31 @@ var x = {
                 try {
                     const client = buildLibsqlClient(env);
                     const formData = await request.formData();
-                    const id = formData.get('id');
-                    const elementName = formData.get('elementName');
-                    const atomicNumber = formData.get('atomicNumber');
-                    const symbol = formData.get('symbol');
+
+                    const IDProdutos = formData.get('IDProdutos');
+                    const nome = formData.get('nome');
+                    const quantidade = formData.get('quantidade');
+                    const preco = formData.get('preco');
+                    const descricao = formData.get('descricao');
+                    const imagem = formData.get('imagem');
+                    const categoria = formData.get('categoria');
 
                     console.log("Received form data:");
-                    console.log("id:", id);
-                    console.log("elementName:", elementName);
-                    console.log("atomicNumber:", atomicNumber);
-                    console.log("symbol:", symbol);
+                    console.log("IDProdutos:", IDProdutos);
+                    console.log("nome:", nome);
+                    console.log("quantidade:", quantidade);
+                    console.log("preco:", preco);
+                    console.log("descricao:", descricao);
+                    console.log("imagem:", imagem);
+                    console.log("categoria:", categoria);
 
-
-
-                    const insertQuery = `INSERT INTO elements (ID, ELEMENTNAME, ATOMICNUMBER, SYMBOL) VALUES (${id}, '${elementName}', ${atomicNumber}, '${symbol}');`;
+                    const insertQuery = `
+                    INSERT INTO produtos (IDProdutos, nome, quantidade, preco, descricao, imagem, categoria) 
+                    VALUES (${IDProdutos}, '${nome}', ${quantidade}, '${preco}', '${descricao}', '${imagem}', '${categoria}');
+                                        `;
                     await client.execute(insertQuery);
-                    return new Response('<h1>Elemento inserido com sucesso!</h1>', {
+
+                    return new Response('<h1>Produto inserido com sucesso!</h1>', {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
                     });
