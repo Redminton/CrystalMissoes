@@ -4529,6 +4529,9 @@ var x = {
 `;
 
                 for (const row of rows) {
+                    const quantidade = row[2];
+                    const categoria = row[3];
+                    if(quantidade >= 1){
                     html += `
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card m-3">
@@ -4543,7 +4546,8 @@ var x = {
                         </div>
                     </div>
                 </div>
-    `;
+    `; 
+                    }
                 }
 
                 html += `
