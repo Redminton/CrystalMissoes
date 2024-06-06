@@ -4484,12 +4484,12 @@ var x = {
                 html += '<div class="container">';
                 html += '<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"><a href="https://redminton.cloud" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">';
                 html += '<div class="bi me-2" role="img" aria-label="Bootstrap">';
-                html += '<img src="imagens/Crystal Missões (2).png" width="300rem" />';
+                html += '<img src="../imagens/Crystal Missões (2).png" width="300rem" />';
                 html += '</div>';
                 html += '</a>';
                 html += '<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">';
                 html += '<li><a href="#" class="nav-link px-2 text-secondary">Início</a></li>';
-                html += '<li><a href="produtos.html" class="nav-link px-2 text-white">Produtos</a></li>';
+                html += '<li><a href="../produtos.html" class="nav-link px-2 text-white">Produtos</a></li>';
                 html += '<li><a href="#" class="nav-link px-2 text-white">Sobre</a></li>';
                 html += '<li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>';
                 html += '<li><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>';
@@ -4500,7 +4500,7 @@ var x = {
                 html += '<button onclick="window.location.href=\'login.html\'" type="button" class="btn btn-warning">MinhaConta</button> </div></div>';
                 html += '<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">';
                 html += '<ul class="nav nav-underline justify-content-center">';
-                html += '<li class="nav-item "><a class="nav-link text-white" aria-current="page" href="#promo">Promoções</a></li>';
+                html += '<li class="nav-item"><a class="nav-link text-white" href="https://redminton.cloud"></a>Promoções</li>';
                 html += '<li class="nav-item"><a class="nav-link text-white" href="https://redminton.cloud/produtos/">Colares</a></li>';
                 html += '<li class="nav-item"><a class="nav-link text-white" href="https://redminton.cloud/chaves/">Anéis</a></li>';
                 html += '<li class="nav-item"><a class="nav-link text-white" href="#">Brincos</a></li>';
