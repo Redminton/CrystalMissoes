@@ -4465,7 +4465,7 @@ var x = {
 
 
 
-        if (url.pathname.startsWith('/mostrar')) {
+        if (url.pathname.startsWith('/mostrar/')) {
             if (request.method === 'GET') {
                 var cat = new URLSearchParams(window.location.search);
                 const categorias = cat.get("cat");
