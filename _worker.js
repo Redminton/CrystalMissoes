@@ -4465,12 +4465,15 @@ var x = {
 
 
 
-        if (url.pathname.startsWith('/produtos/')) {
-            // Cria um cliente para interagir com o banco de dados
-            const client = buildLibsqlClient(env);
+        if (url.pathname.startsWith('/mostrar/')) {
+            if (request.method === 'GET') {
+                var cat = new URLSearchParams(window.location.search);
+                const categorias = cat.get("cat");
+            }
+            const client = buildLibsqlClient(env); 
             try {
                 // Executa a consulta SQL para buscar todos os produtos
-                const result = await client.execute("SELECT * FROM Produtos");
+                const result = await client.execute(`SELECT * FROM Produtos WHERE categoria = '${categoria}'`);
                 // Verifica se o resultado tem uma propriedade 'rows' que é iterável
                 if (!result.rows) {
                     throw new Error('Unexpected result format');
@@ -4530,7 +4533,6 @@ var x = {
 
                 for (const row of rows) {
                     const quantidade = row[2];
-                    const categoria = row[3];
                     if(quantidade >= 1){
                     html += `
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
