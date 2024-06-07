@@ -4469,7 +4469,7 @@ var x = {
             if (request.method === 'GET') {
                 const urlSearchParams = new URL(request.url).searchParams;
                 const categoria = urlSearchParams.get("cat");
-            }
+            
             const client = buildLibsqlClient(env); 
             try {
                 // Executa a consulta SQL para buscar todos os produtos
@@ -4577,6 +4577,7 @@ var x = {
                     headers: { "Content-Type": "text/html" }
                 });
             }
+        }
         }
 
 
