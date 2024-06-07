@@ -4467,8 +4467,8 @@ var x = {
 
         if (url.pathname.startsWith('/mostrar/')) {
             if (request.method === 'GET') {
-                var cat = new URLSearchParams(window.location.search);
-                const categorias = cat.get("cat");
+                const urlSearchParams = new URL(request.url).searchParams;
+                const categoria = urlSearchParams.get("cat");
             }
             const client = buildLibsqlClient(env); 
             try {
