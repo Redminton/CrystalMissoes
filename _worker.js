@@ -4469,18 +4469,18 @@ var x = {
             if (request.method === 'GET') {
                 const urlSearchParams = new URL(request.url).searchParams;
                 const categoria = urlSearchParams.get("cat");
-            
-            const client = buildLibsqlClient(env); 
-            try {
-                // Executa a consulta SQL para buscar todos os produtos
-                const result = await client.execute(`SELECT * FROM Produtos WHERE categoria = '${categoria}'`);
-                // Verifica se o resultado tem uma propriedade 'rows' que é iterável
-                if (!result.rows) {
-                    throw new Error('Unexpected result format');
-                }
-                const rows = result.rows;
-                // Converte os resultados da consulta em uma string HTML
-                let html = `<!DOCTYPE html>
+
+                const client = buildLibsqlClient(env);
+                try {
+                    // Executa a consulta SQL para buscar todos os produtos
+                    const result = await client.execute(`SELECT * FROM Produtos WHERE categoria = '${categoria}'`);
+                    // Verifica se o resultado tem uma propriedade 'rows' que é iterável
+                    if (!result.rows) {
+                        throw new Error('Unexpected result format');
+                    }
+                    const rows = result.rows;
+                    // Converte os resultados da consulta em uma string HTML
+                    let html = `<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -4531,10 +4531,10 @@ var x = {
             <div class="row">
 `;
 
-                for (const row of rows) {
-                    const quantidade = row[2];
-                    if(quantidade >= 1){
-                    html += `
+                    for (const row of rows) {
+                        const quantidade = row[2];
+                        if (quantidade >= 1) {
+                            html += `
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card m-3">
                         <img src="../imagens/${row[6]}" class="card-img-top" alt="...">
@@ -4548,11 +4548,11 @@ var x = {
                         </div>
                     </div>
                 </div>
-    `; 
+    `;
+                        }
                     }
-                }
 
-                html += `
+                    html += `
             </div>
         </div>
     </div>
@@ -4562,22 +4562,22 @@ var x = {
 </html>
 `;
 
-               
 
-                return new Response(html, {
-                    status: 200,
-                    headers: { "Content-Type": "text/html" }
-                });
-            } catch (error) {
-                console.error("Error executing SQL query:", error);
 
-                // Responde com uma mensagem de erro em caso de falha na consulta
-                return new Response('<h1>Internal Server Error</h1>', {
-                    status: 500,
-                    headers: { "Content-Type": "text/html" }
-                });
+                    return new Response(html, {
+                        status: 200,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                } catch (error) {
+                    console.error("Error executing SQL query:", error);
+
+                    // Responde com uma mensagem de erro em caso de falha na consulta
+                    return new Response('<h1>Internal Server Error</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
             }
-        }
         }
 
 
