@@ -55,5 +55,8 @@ body{
 #menor{
     font-size: 90%;
 }
+  .dropdown:hover .dropdown-menu {
+      display: block;
+  }
 
 
