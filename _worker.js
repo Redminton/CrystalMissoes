@@ -4616,12 +4616,12 @@ var x = {
 
 
 
+        https://crystalmissoes.pages.dev/teste
 
 
 
 
-
-        if (url.pathname.startsWith('/')) {
+        if (url.pathname.startsWith('/inicio/')) {
             // Cria um cliente para interagir com o banco de dados
             const client = buildLibsqlClient(env);
             try {
