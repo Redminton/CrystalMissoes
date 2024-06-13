@@ -4621,7 +4621,7 @@ var x = {
 
 
 
-        if (url.pathname.startsWith('/')) {
+        if (url.pathname.startsWith('//')) {
             // Cria um cliente para interagir com o banco de dados
             const client = buildLibsqlClient(env);
             try {
@@ -4775,7 +4775,7 @@ var x = {
                         html += `
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card m-3">
-                        <img src="imagens/${row[6]}" class="card-img-top" alt="...">
+                        <img src="../imagens/${row[6]}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h4 class="card-title">${row[1]}</h4>
                             <h5>R$ ${row[4]} <span style="font-size: smaller; color: red;">10x de R$ ${(row[4] / 10).toFixed(2)}</span></h5>
