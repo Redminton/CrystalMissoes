@@ -4619,7 +4619,7 @@ var x = {
        
 
 
-        if (url.pathname.startsWith('/')) {
+        if (url.pathname.startsWith('/x/')) {
             // Cria um cliente para interagir com o banco de dados
             const client = buildLibsqlClient(env);
             console.log(url);
