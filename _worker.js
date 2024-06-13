@@ -4751,7 +4751,7 @@ var x = {
                     console.log("senha:", senha);
 
                  
-                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = ? AND senha = ?;`;
+                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = ? AND chave = ?;`;
                     const result = await client.execute(checkCredentialsQuery, [user, senha]);
 
                     if (result.rows.length > 0) {
