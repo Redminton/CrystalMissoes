@@ -4622,6 +4622,7 @@ var x = {
         if (url.pathname.startsWith('/')) {
             // Cria um cliente para interagir com o banco de dados
             const client = buildLibsqlClient(env);
+            console.log(url);
             try {
                 // Executa a consulta SQL para buscar todos os produtos
                 const result = await client.execute(`SELECT * FROM Produtos WHERE categoria = 'promo'`);
@@ -4641,7 +4642,7 @@ var x = {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="css/cssindex.css" rel="stylesheet">
+    <link href="../css/cssindex.css" rel="stylesheet">
 
 </head>
 <body>
