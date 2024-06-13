@@ -4747,9 +4747,10 @@ var x = {
                     const senha = formData.get('senha');
 
                     console.log("Received form data:");
-                    console.log("user", user);
+                    console.log("user:", user);
                     console.log("senha:", senha);
 
+                 
                     const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = ? AND senha = ?;`;
                     const result = await client.execute(checkCredentialsQuery, [user, senha]);
 
@@ -4765,11 +4766,9 @@ var x = {
                             headers: { "Content-Type": "text/html" }
                         });
                     }
-
-
                 } catch (error) {
-                    console.error("Error inserting data into SQL:", error);
-                    return new Response('<h1>Internal Server Error POST</h1>', {
+                    console.error("Error checking credentials:", error);
+                    return new Response('<h1>Internal Server Error</h1>', {
                         status: 500,
                         headers: { "Content-Type": "text/html" }
                     });
