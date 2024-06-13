@@ -4750,11 +4750,18 @@ var x = {
                     console.log("user", user);
                     console.log("senha:", senha);
 
-                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
-                    const result = await client.execute(checkCredentialsQuery);
+                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = ? AND senha = ?;`;
+                    const result = await client.execute(checkCredentialsQuery, [user, senha]);
+
                     if (result.rows.length > 0) {
                         return new Response('<h1>Login efetuado</h1>', {
                             status: 200,
+                            headers: { "Content-Type": "text/html" }
+                        });
+                    } else {
+                        // Credentials do not match
+                        return new Response('<h1>Invalid credentials</h1>', {
+                            status: 401,
                             headers: { "Content-Type": "text/html" }
                         });
                     }
