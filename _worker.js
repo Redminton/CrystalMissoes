@@ -4758,8 +4758,9 @@ var x = {
                     }
 
 
-                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = ? AND chave = ?;`;
-                    const result = await client.execute(checkCredentialsQuery, [user, senha]);
+                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
+                    console.log("Executing query:", checkCredentialsQuery);
+                    const result = await client.execute(checkCredentialsQuery);
 
                     if (result.rows.length > 0) {
                         return new Response('<h1>Login efetuado</h1>', {
