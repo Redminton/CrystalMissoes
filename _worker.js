@@ -4684,9 +4684,6 @@ var x = {
                         </tr>`;
                     }
                     html += '</table></body></html>';
-
-
-
                     return new Response(html, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
@@ -4730,6 +4727,39 @@ var x = {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
                     });
+                } catch (error) {
+                    console.error("Error inserting data into SQL:", error);
+                    return new Response('<h1>Internal Server Error POST</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
+            }
+        }
+
+        if (url.pathname.startsWith('/login/')) {
+            if (request.method === 'POST') {
+                try {
+                    const client = buildLibsqlClient(env);
+                    const formData = await request.formData();
+
+                    const user = formData.get('user');
+                    const senha = formData.get('senha');
+
+                    console.log("Received form data:");
+                    console.log("user", user);
+                    console.log("senha:", senha);
+
+                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
+                    const result = await client.execute(checkCredentialsQuery);
+                    if (result.rows.length > 0) {
+                        return new Response('<h1>Login efetuado</h1>', {
+                            status: 200,
+                            headers: { "Content-Type": "text/html" }
+                        });
+                    }
+
+
                 } catch (error) {
                     console.error("Error inserting data into SQL:", error);
                     return new Response('<h1>Internal Server Error POST</h1>', {
