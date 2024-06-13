@@ -4750,7 +4750,14 @@ var x = {
                     console.log("user:", user);
                     console.log("senha:", senha);
 
-                 
+                    if (!user || !senha) {
+                        return new Response('<h1>Missing credentials</h1>', {
+                            status: 400,
+                            headers: { "Content-Type": "text/html" }
+                        });
+                    }
+
+
                     const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = ? AND chave = ?;`;
                     const result = await client.execute(checkCredentialsQuery, [user, senha]);
 
