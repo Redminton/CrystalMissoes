@@ -4643,16 +4643,9 @@ var x = {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="css/cssindex.css" rel="stylesheet">
+    <link href="../css/cssindex.css" rel="stylesheet">
 
 </head>
-
-
-
-
-
-
-
 <body>
     <div class="container">
         <header class="p-3">
@@ -4712,16 +4705,6 @@ var x = {
                 </div>
             </div>
         </header>
-
-
-
-
-
-
-
-
-
-
 
 
         <div class="container-fluid">
@@ -4792,7 +4775,7 @@ var x = {
                         html += `
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card m-3">
-                        <img src="../imagens/${row[6]}" class="card-img-top" alt="...">
+                        <img src="imagens/${row[6]}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h4 class="card-title">${row[1]}</h4>
                             <h5>R$ ${row[4]} <span style="font-size: smaller; color: red;">10x de R$ ${(row[4] / 10).toFixed(2)}</span></h5>
