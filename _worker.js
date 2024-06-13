@@ -4763,7 +4763,7 @@ var x = {
                     const result = await client.execute(checkCredentialsQuery);
 
                     if (result.rows.length > 0) {
-                        html = `<!DOCTYPE html>
+                       let html = `<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -4785,7 +4785,7 @@ var x = {
         <label for="nome">Nome do Produto:</label><br>
         <input type="text" id="nome" name="nome"><br>
         <label for="quantidade">Quantidade:</label><br>
-        <input type="number" id="quantidade" name="quantidade"><br>
+        <input type="nu'<h1>Login efetuado</h1>'mber" id="quantidade" name="quantidade"><br>
         <label for="preco">preco</label><br>
         <input type="text" id="preco" name="preco"><br>
         <label for="descricao">descrição</label><br>
