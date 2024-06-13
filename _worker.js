@@ -4641,7 +4641,7 @@ var x = {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="http://crystalmissoes.pages.dev//css/cssindex.css" rel="stylesheet">
+    <link href="http://crystalmissoes.pages.dev/css/cssindex.css" rel="stylesheet">
 
 </head>
 <body>
@@ -4792,6 +4792,51 @@ var x = {
             </div>
         </div>
     </div>
+
+     <div id="contato" class="container mt-5">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="card-title">Contato</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Telefone:</strong> (55) 99951-8773
+                    </p>
+                    <p class="card-text">
+                        <strong>Email:</strong> contato@redminton.cloud
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container">
+            <footer id="rodape" class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item te"><a href="#" class="nav-link px-2 text-white ">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Sobre</a></li>
+                    <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
+                </ul>
+                <p class="text-center"> 2024 Crystal Missões Powered By
+                    <a class="text-white nav-item" href="https://redminton.github.io">Redminton.cloud</a>
+                </p>
+            </footer>
+        </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz4fnFO9gybByi0jFzvPpf8TnxFb13FYfsyHelyzZ4p1IdP8M0yNfQdK7z"
         crossorigin="anonymous"></script>
