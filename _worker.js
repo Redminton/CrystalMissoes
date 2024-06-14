@@ -4616,7 +4616,7 @@ var x = {
 
 
 
-       
+
 
 
         if (url.pathname.startsWith('/inicio/')) {
@@ -4632,7 +4632,8 @@ var x = {
                 }
                 const rows = result.rows;
                 // Converte os resultados da consulta em uma string HTML
-                let html = `<!DOCTYPE html>
+                let html = `
+                <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -4704,8 +4705,6 @@ var x = {
                 </div>
             </div>
         </header>
-
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -4749,25 +4748,13 @@ var x = {
                 </div>
             </div>
         </div>
-
         <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div>
+            <h3 id="promo" class="text-center">Promoções</h3>
+        </div>
         <div class="d-flex justify-content-center">
             <div class="row">
 `;
-
                 for (const row of rows) {
                     const quantidade = row[2];
                     if (quantidade >= 1) {
@@ -4971,7 +4958,7 @@ var x = {
                     const result = await client.execute(checkCredentialsQuery);
 
                     if (result.rows.length > 0) {
-                       let html = `<!DOCTYPE html>
+                        let html = `<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
