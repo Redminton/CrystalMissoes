@@ -4698,7 +4698,7 @@ var x = {
                     </form>
 
                     <div class="text-end">
-                        <button onclick="window.location.href='login.html'" type="button" class="btn btn-warning">Minha
+                        <button onclick="window.location.href='../login.html'" type="button" class="btn btn-warning">Minha
                             Conta</button>
                     </div>
                 </div>
@@ -4720,7 +4720,7 @@ var x = {
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item">
-                                <img class="d-block w-100" alt="Carousel Bootstrap First" src="imagens/joias3.webp" />
+                                <img class="d-block w-100" alt="Carousel Bootstrap First" src="../imagens/joias3.webp" />
                                 <div class="carousel-caption">
                                     <h4>
 
@@ -4728,12 +4728,12 @@ var x = {
                                 </div>
                             </div>
                             <div class="carousel-item active">
-                                <img class="d-block w-100" alt="Carousel Bootstrap Second" src="imagens/joia1.png" />
+                                <img class="d-block w-100" alt="Carousel Bootstrap Second" src="../imagens/joia1.png" />
                                 <div class="carousel-caption">
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" alt="Carousel Bootstrap Third" src="imagens/joias2.jpg" />
+                                <img class="d-block w-100" alt="Carousel Bootstrap Third" src="../imagens/joias2.jpg" />
                                 <div class="carousel-caption">
                                     <h4>
 
