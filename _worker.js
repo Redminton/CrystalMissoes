@@ -5077,4 +5077,3 @@ function buildLibsqlClient(env) {
 export {
     x as default
 };
-//# sourceMappingURL=worker.js.map
