@@ -4561,9 +4561,6 @@ var x = {
 </body>
 </html>
 `;
-
-
-
                     return new Response(html, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
