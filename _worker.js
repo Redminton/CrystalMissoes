@@ -4857,9 +4857,9 @@ var x = {
 
         if (url.pathname.startsWith('/teste/')) {
             if (request.method === 'GET') {
-                const client = buildLibsqlClient(env);
+               /*  const client = buildLibsqlClient(env);
                 try {
-                    const result = await client.execute("SELECT * FROM Produtos");
+                   const result = await client.execute("SELECT * FROM Produtos");
                     if (!Array.isArray(result.rows)) {
 
                         throw new Error('Unexpected result format');
@@ -4876,6 +4876,26 @@ var x = {
                         </tr>`;
                     }
                     html += '</table></body></html>';
+                    */
+                    const client = buildLibsqlClient(env);
+                    try {
+                        const result = await client.execute("SELECT * FROM Produtos");
+                        if (!Array.isArray(result.rows)) {
+                            throw new Error('Unexpected result format');
+                        }
+                        const rows = result.rows;
+
+                        let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
+                        html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
+                        html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
+                        html += '<th>quantidade</th><th>Ações</th></tr>';
+                        for (const row of rows) {
+                            html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td>`
+                            html += `<td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>`
+                            html += `<td><a href="/teste/edit/${row[0]}">Editar</a> | <a href="/teste/delete/${row[0]}">Deletar</a></td>`
+                            html += `</tr>`;
+                        }
+                        html += '</table></body></html>';
                     return new Response(html, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
@@ -4926,8 +4946,116 @@ var x = {
                         headers: { "Content-Type": "text/html" }
                     });
                 }
+            } else if (request.method === 'GET' && url.pathname.startsWith('/teste/edit/')) {
+                const IDProduto = url.pathname.split('/').pop();
+                const client = buildLibsqlClient(env);
+                try {
+                    const result = await client.execute(`SELECT * FROM Produtos WHERE IDProdutos = ${IDProduto}`);
+                    if (!Array.isArray(result.rows) || result.rows.length === 0) {
+                        throw new Error('Produto não encontrado');
+                    }
+                    const row = result.rows[0];
+
+                    let html = `
+        <h1>Editar Produto</h1>
+        <form action="/teste/update/${IDProduto}" method="post">
+          <label for="nome">Nome do Produto:</label><br>
+          <input type="text" id="nome" name="nome" value="${row[1]}"><br>
+          <label for="quantidade">Quantidade:</label><br>
+          <input type="number" id="quantidade" name="quantidade" value="${row[2]}"><br>
+          <label for="preco">preco</label><br>
+          <input type="text" id="preco" name="preco" value="${row[4]}"><br>
+           <label for="descricao">descrição</label><br>
+          <input type="text" id="descricao" name="descricao" value="${row[5]}"><br>
+          <label for="imagem">imagem</label><br>
+          <input type="text" id="imagem" name="imagem" value="${row[6]}"><br>
+          <label for="categoria">Categoria</label><br>
+          <select class="form-control-dark"  id="categoria" name="categoria">
+            <option value="promo" ${row[3] === 'promo' ? 'elected' : ''}>Promoções</option>
+            <option value="colar" ${row[3] === 'colar' ? 'elected' : ''}>Colares</option>
+            <option value="anel" ${row[3] === 'anel' ? 'elected' : ''}>Anéis</option>
+            <option value="brinco" ${row[3] === 'brinco' ? 'elected' : ''}>Brincos</option>
+            <option value="gargantilha" ${row[3] === 'gargantilha' ? 'elected' : ''}>Gargantilhas</option>
+            <option value="pulseira" ${row[3] === 'pulseira' ? 'elected' : ''}>Pulseiras</option>
+            <option value="conjunto" ${row[3] === 'conjunto' ? 'elected' : ''}>Conjuntos</option>
+            <option value="acessorio" ${row[3] === 'acessorio' ? 'elected' : ''}>Acessórios</option>
+            <option value="masculino" ${row[3] === 'asculino' ? 'elected' : ''}>Masculinos</option>
+          </select><br><br>
+          <input type="submit" value="Atualizar">
+        </form>
+      `;
+                    return new Response(html, {
+                        status: 200,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                } catch (error) {
+                    console.error("Error fetching product data:", error);
+                    return new Response('<h1>Internal Server Error GET</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
+            } else if (request.method === 'POST' && url.pathname.startsWith('/teste/update/')) {
+                const IDProduto = url.pathname.split('/').pop();
+                const client = buildLibsqlClient(env);
+                try {
+                    const formData = await request.formData();
+
+                    const nome = formData.get('nome');
+                    const quantidade = formData.get('quantidade');
+                    const preco = formData.get('preco');
+                    const descricao = formData.get('descricao');
+                    const imagem = formData.get('imagem');
+                    const categoria = formData.get('categoria');
+
+                    console.log("Received form data:");
+                    console.log("nome:", nome);
+                    console.log("quantidade:", quantidade);
+                    console.log("preco:", preco);
+                    console.log("descricao:", descricao);
+                    console.log("imagem:", imagem);
+                    console.log("categoria:", categoria);
+
+                    const updateQuery = `
+        UPDATE produtos 
+        SET nome = '${nome}', quantidade = ${quantidade}, preco = '${preco}', 
+        descricao = '${descricao}', imagem = '${imagem}', categoria = '${categoria}' 
+        WHERE IDProdutos = ${IDProduto}
+      `;
+                    await client.execute(updateQuery);
+
+                    return new Response('<h1>Produto atualizado com sucesso!</h1>', {
+                        status: 200,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                } catch (error) {
+                    console.error("Error updating product data:", error);
+                    return new Response('<h1>Internal Server Error POST</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
+            } else if (request.method === 'GET' && url.pathname.startsWith('/teste/delete/')) {
+                const IDProduto = url.pathname.split('/').pop();
+                const client = buildLibsqlClient(env);
+                try {
+                    const deleteQuery = `DELETE FROM produtos WHERE IDProdutos = ${IDProduto}`;
+                    await client.execute(deleteQuery);
+
+                    return new Response('<h1>Produto deletado com sucesso!</h1>', {
+                        status: 200,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                } catch (error) {
+                    console.error("Error deleting product data:", error);
+                    return new Response('<h1>Internal Server Error GET</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
             }
         }
+        
 
         if (url.pathname.startsWith('/login/')) {
             if (request.method === 'POST') {
