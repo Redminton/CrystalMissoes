@@ -4686,7 +4686,7 @@ var x = {
                                         href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
                             </ul>
                         </li>
-                        <li><a href="about.html" class="nav-link px-2 text-white">Sobre</a></li>
+                        <li><a href="../about.html" class="nav-link px-2 text-white">Sobre</a></li>
                         <li><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
                     </ul>
 
@@ -4977,7 +4977,7 @@ var x = {
         <label for="nome">Nome do Produto:</label><br>
         <input type="text" id="nome" name="nome"><br>
         <label for="quantidade">Quantidade:</label><br>
-        <input type="nu'<h1>Login efetuado</h1>'mber" id="quantidade" name="quantidade"><br>
+        <input type="number' id="quantidade" name="quantidade"><br>
         <label for="preco">preco</label><br>
         <input type="text" id="preco" name="preco"><br>
         <label for="descricao">descrição</label><br>
