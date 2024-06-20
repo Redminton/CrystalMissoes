@@ -4790,22 +4790,6 @@ var x = {
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="container">
             <footer id="rodape" class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -4852,108 +4836,157 @@ var x = {
 
 
 
-        if (url.pathname.startsWith('/teste/')) {
-            if (request.method === 'GET') {
-               /*  const client = buildLibsqlClient(env);
-                try {
-                   const result = await client.execute("SELECT * FROM Produtos");
-                    if (!Array.isArray(result.rows)) {
 
-                        throw new Error('Unexpected result format');
-                    }
-                    const rows = result.rows;
 
-                    let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
-                    html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
-                    html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
-                    html += '<th>quantidade</th></tr>';
-                    for (const row of rows) {
-                        html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}
-                        </td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
-                        </tr>`;
-                    }
-                    html += '</table></body></html>';
-                    */
-                    const client = buildLibsqlClient(env);
-                    try {
-                        const result = await client.execute("SELECT * FROM Produtos");
-                        if (!Array.isArray(result.rows)) {
-                            throw new Error('Unexpected result format');
-                        }
-                        const rows = result.rows;
 
-                        let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
-                        html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
-                        html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
-                        html += '<th>quantidade</th><th>Ações</th></tr>';
-                        for (const row of rows) {
-                            html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td>`
-                            html += `<td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>`
-                            html += `<td><a href="/teste/edit/${row[0]}">Editar</a> | <a href="/teste/delete/${row[0]}">Deletar</a></td>`
-                            html += `</tr>`;
-                        }
-                        html += '</table></body></html>';
-                    return new Response(html, {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                } catch (error) {
-                    console.error("Error executing SQL query:", error);
-                    return new Response('<h1>Internal Server Error GET</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
-            } else if (request.method === 'POST') {
-                try {
-                    const client = buildLibsqlClient(env);
-                    const formData = await request.formData();
 
-                    const IDProdutos = formData.get('IDProdutos');
-                    const nome = formData.get('nome');
-                    const quantidade = formData.get('quantidade');
-                    const preco = formData.get('preco');
-                    const descricao = formData.get('descricao');
-                    const imagem = formData.get('imagem');
-                    const categoria = formData.get('categoria');
 
-                    console.log("Received form data:");
-                    console.log("IDProdutos:", IDProdutos);
-                    console.log("nome:", nome);
-                    console.log("quantidade:", quantidade);
-                    console.log("preco:", preco);
-                    console.log("descricao:", descricao);
-                    console.log("imagem:", imagem);
-                    console.log("categoria:", categoria);
 
-                    const insertQuery = `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*    if (url.pathname.startsWith('/teste/')) {
+              if (request.method === 'GET') {
+                 const client = buildLibsqlClient(env);
+                  try {
+                     const result = await client.execute("SELECT * FROM Produtos");
+                      if (!Array.isArray(result.rows)) {
+  
+                          throw new Error('Unexpected result format');
+                      }
+                      const rows = result.rows;
+  
+                      let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
+                      html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
+                      html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
+                      html += '<th>quantidade</th></tr>';
+                      for (const row of rows) {
+                          html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}
+                          </td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
+                          </tr>`;
+                      }
+                      html += '</table></body></html>';
+                      
+        const client = buildLibsqlClient(env);
+        try {
+            const result = await client.execute("SELECT * FROM Produtos");
+            if (!Array.isArray(result.rows)) {
+                throw new Error('Unexpected result format');
+            }
+            const rows = result.rows;
+
+            let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
+            html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
+            html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
+            html += '<th>quantidade</th><th>Ações</th></tr>';
+            for (const row of rows) {
+                html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td>`
+                html += `<td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>`
+                html += `<td><a href="/teste/edit/${row[0]}">Editar</a> | <a href="/teste/delete/${row[0]}">Deletar</a></td>`
+                html += `</tr>`;
+            }
+            html += '</table></body></html>';
+            return new Response(html, {
+                status: 200,
+                headers: { "Content-Type": "text/html" }
+            });
+        } catch (error) {
+            console.error("Error executing SQL query:", error);
+            return new Response('<h1>Internal Server Error GET</h1>', {
+                status: 500,
+                headers: { "Content-Type": "text/html" }
+            });
+        }
+    } else if(request.method === 'POST') {
+        try {
+            const client = buildLibsqlClient(env);
+const formData = await request.formData();
+
+const IDProdutos = formData.get('IDProdutos');
+const nome = formData.get('nome');
+const quantidade = formData.get('quantidade');
+const preco = formData.get('preco');
+const descricao = formData.get('descricao');
+const imagem = formData.get('imagem');
+const categoria = formData.get('categoria');
+
+console.log("Received form data:");
+console.log("IDProdutos:", IDProdutos);
+console.log("nome:", nome);
+console.log("quantidade:", quantidade);
+console.log("preco:", preco);
+console.log("descricao:", descricao);
+console.log("imagem:", imagem);
+console.log("categoria:", categoria);
+
+const insertQuery = `
                     INSERT INTO produtos (IDProdutos, nome, quantidade, preco, descricao, imagem, categoria) 
                     VALUES (${IDProdutos}, '${nome}', ${quantidade}, '${preco}', '${descricao}', '${imagem}', '${categoria}');
                                         `;
-                    await client.execute(insertQuery);
+await client.execute(insertQuery);
 
-                    return new Response('<h1>Produto inserido com sucesso!</h1>', {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
+return new Response('<h1>Produto inserido com sucesso!</h1>', {
+    status: 200,
+    headers: { "Content-Type": "text/html" }
+});
                 } catch (error) {
-                    console.error("Error inserting data into SQL:", error);
-                    return new Response('<h1>Internal Server Error POST</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
-            } else if /*(request.method === 'GET' &&*/ (url.pathname.startsWith('/teste/edit/')) {
-                const IDProduto = url.pathname.split('/').pop();
-                const client = buildLibsqlClient(env);
-                try {
-                    const result = await client.execute(`SELECT * FROM Produtos WHERE IDProdutos = ${IDProduto}`);
-                    if (!Array.isArray(result.rows) || result.rows.length === 0) {
-                        throw new Error('Produto não encontrado');
-                    }
-                    const row = result.rows[0];
+    console.error("Error inserting data into SQL:", error);
+    return new Response('<h1>Internal Server Error POST</h1>', {
+        status: 500,
+        headers: { "Content-Type": "text/html" }
+    });
+}
+            } else if (request.method === 'GET' && (url.pathname.startsWith('/teste/edit/')) {
+    const IDProduto = url.pathname.split('/').pop();
+    const client = buildLibsqlClient(env);
+    try {
+        const result = await client.execute(`SELECT * FROM Produtos WHERE IDProdutos = ${IDProduto}`);
+        if (!Array.isArray(result.rows) || result.rows.length === 0) {
+            throw new Error('Produto não encontrado');
+        }
+        const row = result.rows[0];
 
-                    let html = `
+        let html = `
         <h1>Editar Produto</h1>
         <form action="/teste/update/${IDProduto}" method="post">
           <label for="nome">Nome do Produto:</label><br>
@@ -4981,106 +5014,106 @@ var x = {
           <input type="submit" value="Atualizar">
         </form>
       `;
-                    return new Response(html, {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                } catch (error) {
-                    console.error("Error fetching product data:", error);
-                    return new Response('<h1>Internal Server Error GET</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
-            } else if (request.method === 'POST' && url.pathname.startsWith('/teste/update/')) {
-                const IDProduto = url.pathname.split('/').pop();
-                const client = buildLibsqlClient(env);
-                try {
-                    const formData = await request.formData();
+        return new Response(html, {
+            status: 200,
+            headers: { "Content-Type": "text/html" }
+        });
+    } catch (error) {
+        console.error("Error fetching product data:", error);
+        return new Response('<h1>Internal Server Error GET</h1>', {
+            status: 500,
+            headers: { "Content-Type": "text/html" }
+        });
+    }
+} else if (request.method === 'POST' && url.pathname.startsWith('/teste/update/')) {
+    const IDProduto = url.pathname.split('/').pop();
+    const client = buildLibsqlClient(env);
+    try {
+        const formData = await request.formData();
 
-                    const nome = formData.get('nome');
-                    const quantidade = formData.get('quantidade');
-                    const preco = formData.get('preco');
-                    const descricao = formData.get('descricao');
-                    const imagem = formData.get('imagem');
-                    const categoria = formData.get('categoria');
+        const nome = formData.get('nome');
+        const quantidade = formData.get('quantidade');
+        const preco = formData.get('preco');
+        const descricao = formData.get('descricao');
+        const imagem = formData.get('imagem');
+        const categoria = formData.get('categoria');
 
-                    console.log("Received form data:");
-                    console.log("nome:", nome);
-                    console.log("quantidade:", quantidade);
-                    console.log("preco:", preco);
-                    console.log("descricao:", descricao);
-                    console.log("imagem:", imagem);
-                    console.log("categoria:", categoria);
+        console.log("Received form data:");
+        console.log("nome:", nome);
+        console.log("quantidade:", quantidade);
+        console.log("preco:", preco);
+        console.log("descricao:", descricao);
+        console.log("imagem:", imagem);
+        console.log("categoria:", categoria);
 
-                    const updateQuery = `
+        const updateQuery = `
         UPDATE produtos 
         SET nome = '${nome}', quantidade = ${quantidade}, preco = '${preco}', 
         descricao = '${descricao}', imagem = '${imagem}', categoria = '${categoria}' 
         WHERE IDProdutos = ${IDProduto}
       `;
-                    await client.execute(updateQuery);
+        await client.execute(updateQuery);
 
-                    return new Response('<h1>Produto atualizado com sucesso!</h1>', {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                } catch (error) {
-                    console.error("Error updating product data:", error);
-                    return new Response('<h1>Internal Server Error POST</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
-            } else if (request.method === 'GET' && url.pathname.startsWith('/teste/delete/')) {
-                const IDProduto = url.pathname.split('/').pop();
-                const client = buildLibsqlClient(env);
-                try {
-                    const deleteQuery = `DELETE FROM produtos WHERE IDProdutos = ${IDProduto}`;
-                    await client.execute(deleteQuery);
+        return new Response('<h1>Produto atualizado com sucesso!</h1>', {
+            status: 200,
+            headers: { "Content-Type": "text/html" }
+        });
+    } catch (error) {
+        console.error("Error updating product data:", error);
+        return new Response('<h1>Internal Server Error POST</h1>', {
+            status: 500,
+            headers: { "Content-Type": "text/html" }
+        });
+    }
+} else if (request.method === 'GET' && url.pathname.startsWith('/teste/delete/')) {
+    const IDProduto = url.pathname.split('/').pop();
+    const client = buildLibsqlClient(env);
+    try {
+        const deleteQuery = `DELETE FROM produtos WHERE IDProdutos = ${IDProduto}`;
+        await client.execute(deleteQuery);
 
-                    return new Response('<h1>Produto deletado com sucesso!</h1>', {
-                        status: 200,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                } catch (error) {
-                    console.error("Error deleting product data:", error);
-                    return new Response('<h1>Internal Server Error GET</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
-            }
+        return new Response('<h1>Produto deletado com sucesso!</h1>', {
+            status: 200,
+            headers: { "Content-Type": "text/html" }
+        });
+    } catch (error) {
+        console.error("Error deleting product data:", error);
+        return new Response('<h1>Internal Server Error GET</h1>', {
+            status: 500,
+            headers: { "Content-Type": "text/html" }
+        });
+    }
+}
         }
-        
 
-        if (url.pathname.startsWith('/login/')) {
-            if (request.method === 'POST') {
-                try {
-                    const client = buildLibsqlClient(env);
-                    const formData = await request.formData();
+*/
+if (url.pathname.startsWith('/login/')) {
+    if (request.method === 'POST') {
+        try {
+            const client = buildLibsqlClient(env);
+            const formData = await request.formData();
 
-                    const user = formData.get('user');
-                    const senha = formData.get('senha');
+            const user = formData.get('user');
+            const senha = formData.get('senha');
 
-                    console.log("Received form data:");
-                    console.log("user:", user);
-                    console.log("senha:", senha);
+            console.log("Received form data:");
+            console.log("user:", user);
+            console.log("senha:", senha);
 
-                    if (!user || !senha) {
-                        return new Response('<h1>Missing credentials</h1>', {
-                            status: 400,
-                            headers: { "Content-Type": "text/html" }
-                        });
-                    }
+            if (!user || !senha) {
+                return new Response('<h1>Missing credentials</h1>', {
+                    status: 400,
+                    headers: { "Content-Type": "text/html" }
+                });
+            }
 
 
-                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
-                    console.log("Executing query:", checkCredentialsQuery);
-                    const result = await client.execute(checkCredentialsQuery);
+            const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
+            console.log("Executing query:", checkCredentialsQuery);
+            const result = await client.execute(checkCredentialsQuery);
 
-                    if (result.rows.length > 0) {
-                        let html = `<!DOCTYPE html>
+            if (result.rows.length > 0) {
+                let html = `<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -5144,26 +5177,26 @@ var x = {
   
   </html>`;
 
-                        return new Response(html, {
-                            status: 200,
-                            headers: { "Content-Type": "text/html" }
-                        });
-                    } else {
-                        // Credentials do not match
-                        return new Response('<h1>Invalid credentials</h1>', {
-                            status: 401,
-                            headers: { "Content-Type": "text/html" }
-                        });
-                    }
-                } catch (error) {
-                    console.error("Error checking credentials:", error);
-                    return new Response('<h1>Internal Server Error</h1>', {
-                        status: 500,
-                        headers: { "Content-Type": "text/html" }
-                    });
-                }
+                return new Response(html, {
+                    status: 200,
+                    headers: { "Content-Type": "text/html" }
+                });
+            } else {
+                // Credentials do not match
+                return new Response('<h1>Invalid credentials</h1>', {
+                    status: 401,
+                    headers: { "Content-Type": "text/html" }
+                });
             }
+        } catch (error) {
+            console.error("Error checking credentials:", error);
+            return new Response('<h1>Internal Server Error</h1>', {
+                status: 500,
+                headers: { "Content-Type": "text/html" }
+            });
         }
+    }
+}
 
 
 
@@ -5174,8 +5207,8 @@ var x = {
 
 
 
-        // Serve os assets estáticos para outras requisições
-        return env.ASSETS.fetch(request);
+// Serve os assets estáticos para outras requisições
+return env.ASSETS.fetch(request);
     },
 };
 
