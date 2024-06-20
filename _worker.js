@@ -4946,7 +4946,7 @@ var x = {
                         headers: { "Content-Type": "text/html" }
                     });
                 }
-            } else if (request.method === 'GET' && url.pathname.startsWith('/teste/edit/')) {
+            } else if /*(request.method === 'GET' &&*/ (url.pathname.startsWith('/teste/edit/')) {
                 const IDProduto = url.pathname.split('/').pop();
                 const client = buildLibsqlClient(env);
                 try {
