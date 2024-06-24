@@ -5129,6 +5129,16 @@ var sistema = {
 
 
 
+
+
+
+
+
+
+
+
+
+
         if (url.pathname.startsWith('/editppieastereggboanoite/')) {
             const id = url.pathname.split('/editppieastereggboanoite/')[1];
             if (id && request.method === 'GET') {
@@ -5146,28 +5156,128 @@ var sistema = {
                     const produto = result.rows[0];
 
                     const formHtml = `
-                <!DOCTYPE html>
-                <html>
-                <head><title>Editar</title></head>
-                <body>
-                    <h1>Editar</h1>
-                    <form method="POST" action="/editppieastereggboanoite/${produto[0]}">
-                        <label for="nome">Nome:</label><br>
-                        <input type="text" id="nome" name="nome" value="${produto[1]}"><br>
-                        <label for="descricao">Descricao:</label><br>
-                        <input type="text" id="descricao" name="descricao" value="${produto[5]}"><br>
-                        <label for="imagem">imagem:</label><br> 
-                        <input type="text" id="imagem" name="imagem" value="${produto[6]}"><br>
-                        <label for="categoria">Categoria:</label><br>
-                        <input type="text" id="categoria" name="categoria" value="${produto[3]}"><br>
-                        <label for="preco">Preco:</label><br>
-                        <input type="text" id="preco" name="preco" value="${produto[4]}"><br>
-                        <label for="quantidade">Quantidade:</label><br>
-                        <input type="text" id="quantidade" name="quantidade" value="${produto[2]}"><br><br>
-                        <input type="submit" value="Update">
+              <   <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../css/cssindex.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="p-3">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="https://redminton.cloud"
+                        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <div class="bi me-2" role="img" aria-label="Bootstrap">
+                            <img src="../imagens/Crystal Missões (2).png" width="300rem" />
+                        </div>
+                    </a>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="#" class="nav-link px-2 text-secondary">Início</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px-2 text-white" id="produtosDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Produtos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="produtosDropdown">
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=promo">Promoções</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=colar">Colares</a></li>
+                                <li><a class="dropdown-item" href="https://redminton.cloud/mostrar/?cat=anel">Anéis</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=promo">Gargantilhas</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=conjunto">Conjuntos</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../about.html" class="nav-link px-2 text-white">Sobre</a></li>
+                        <li><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
+                    </ul>
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control form-control-dark text-start"
+                            placeholder="Pesquisar..." aria-label="Search">
                     </form>
-                </body>
-                </html>
+
+                    <div class="text-end">
+                        <button onclick="window.location.href='../login.html'" type="button" class="btn btn-warning">Minha
+                            Conta</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Editar Produto</h1>
+        <form method="POST" action="/editppieastereggboanoite/${produto[0]}" class="mt-4">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="${produto[1]}">
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" name="descricao" value="${produto[5]}">
+            </div>
+            <div class="form-group">
+                <label for="imagem">Imagem:</label>
+                <input type="text" class="form-control" id="imagem" name="imagem" value="${produto[6]}">
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria:</label>
+                <input type="text" class="form-control" id="categoria" name="categoria" value="${produto[3]}">
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="text" class="form-control" id="preco" name="preco" value="${produto[4]}">
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade:</label>
+                <input type="text" class="form-control" id="quantidade" name="quantidade" value="${produto[2]}">
+            </div>
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        </form>
+    </div>
+
+    <div class="container">
+            <footer id="rodape" class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item te"><a href="https://redminton.cloud" class="nav-link px-2 text-white ">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="../about" class="nav-link px-2 text-white ">Sobre</a></li>
+                    <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
+                </ul>
+                <p class="text-center"> 2024 Crystal Missões Powered By
+                    <a class="text-white nav-item" href="https://redminton.github.io">Redminton.cloud</a>
+                </p>
+            </footer>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybByi0jFzvPpf8TnxFb13FYfsyHelyzZ4p1IdP8M0yNfQdK7z"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Q5A6iKXZir8bYhRVF0T7ScXKfq6ZQFl39AxxDy7SDEsvH8UYK/nlEV+XWf0Q69H5"
+        crossorigin="anonymous"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    </body></html>
             `;
 
                     return new Response(formHtml, {
@@ -5213,6 +5323,29 @@ var sistema = {
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (url.pathname.startsWith('/insertppieastereggboanoite/')) {
             const formData = await request.formData();
             const nome = formData.get('nome');
@@ -5253,6 +5386,17 @@ var sistema = {
                 });
             }
         }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
