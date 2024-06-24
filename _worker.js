@@ -5093,7 +5093,14 @@ if (url.pathname.startsWith('/login/')) {
             const result = await client.execute(checkCredentialsQuery);
 
             if (result.rows.length > 0) { 
-
+                const client = buildLibsqlClient(env);
+                try {
+                    
+                    const result = await client.execute(`SELECT * FROM Produtos`);
+                    
+                    if (!result.rows) {
+                        throw new Error('Unexpected result format');
+                    }
                 const rows = result.rows;
                 let acesso = `<!DOCTYPE html><html><head><title>Results</title></head><body>
                <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
