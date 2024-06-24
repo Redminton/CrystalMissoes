@@ -4911,9 +4911,9 @@ var x = {
                     const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
                     console.log("Executing query:", checkCredentialsQuery);
                     const result = await client.execute(checkCredentialsQuery);
-
+                    let x = FALSE;
                     if (result.rows.length > 0) {
-                        const x = TRUE;
+                         x = TRUE;
                         const client = buildLibsqlClient(env);
                         try {
 
