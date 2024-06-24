@@ -4981,7 +4981,7 @@ var x = {
                         });
                     }
 
-                    const product = result.rows[0];
+                    const produto = result.rows[0];
 
                     const formHtml = `
                 <!DOCTYPE html>
@@ -4989,19 +4989,19 @@ var x = {
                 <head><title>Edit Product</title></head>
                 <body>
                     <h1>Edit Product</h1>
-                    <form method="POST" action="/edit/${product[0]}">
+                    <form method="POST" action="/edit/${produto[0]}">
                         <label for="nome">Nome:</label><br>
-                        <input type="text" id="nome" name="nome" value="${product[1]}"><br>
+                        <input type="text" id="nome" name="nome" value="${produto[1]}"><br>
                         <label for="descricao">Descricao:</label><br>
-                        <input type="text" id="descricao" name="descricao" value="${product[5]}"><br>
-                          <label for="imagem">imagem</label><br> 
-                         <input type="text" id="imagem" name="imagem" value="${product[6]}><br>
+                        <input type="text" id="descricao" name="descricao" value="${produto[5]}"><br>
+                        <label for="imagem">imagem:</label><br> 
+                        <input type="text" id="imagem" name="imagem" value="${produto[6]}"><br>
                         <label for="categoria">Categoria:</label><br>
-                        <input type="text" id="categoria" name="categoria" value="${product[3]}"><br>
+                        <input type="text" id="categoria" name="categoria" value="${produto[3]}"><br>
                         <label for="preco">Preco:</label><br>
-                        <input type="text" id="preco" name="preco" value="${product[4]}"><br>
+                        <input type="text" id="preco" name="preco" value="${produto[4]}"><br>
                         <label for="quantidade">Quantidade:</label><br>
-                        <input type="text" id="quantidade" name="quantidade" value="${product[2]}"><br><br>
+                        <input type="text" id="quantidade" name="quantidade" value="${produto[2]}"><br><br>
                         <input type="submit" value="Update">
                     </form>
                 </body>
