@@ -5001,7 +5001,7 @@ var sistema = {
                         </div>
                     </a>
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 text-secondary">Início</a></li>
+                        <li><a href="https://redminton.cloud" class="nav-link px-2 text-white">Início</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle px-2 text-white" id="produtosDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -5229,7 +5229,7 @@ var sistema = {
                         </div>
                     </a>
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 text-secondary">Início</a></li>
+                        <li><a href="https://redminton.cloud" class="nav-link px-2 text-white">Início</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle px-2 text-white" id="produtosDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
