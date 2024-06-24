@@ -4885,7 +4885,7 @@ var sistema = {
 
 
 
-    
+
 
         if (url.pathname.startsWith('/login/')) {
             if (request.method === 'POST') {
@@ -4913,7 +4913,8 @@ var sistema = {
                     const result = await client.execute(checkCredentialsQuery);
                     let x = 0;
                     if (result.rows.length > 0) {
-                         x = 1;
+                        x = 1;
+                        console.log(x);
                         const client = buildLibsqlClient(env);
                         try {
 
@@ -4936,7 +4937,7 @@ var sistema = {
                                 status: 200,
                                 headers: { "Content-Type": "text/html" }
                             });
-                        } catch(error) {
+                        } catch (error) {
                             console.error("Error executing SQL query:", error);
 
                             // Responde com uma mensagem de erro em caso de falha na consulta
@@ -4945,8 +4946,8 @@ var sistema = {
                                 headers: { "Content-Type": "text/html" }
                             });
                         }
-}
-                         else {
+                    }
+                    else {
                         // Credentials do not match
                         return new Response('<h1>Invalid credentials</h1>', {
                             status: 401,
