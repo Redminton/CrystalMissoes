@@ -4964,7 +4964,7 @@ var sistema = {
 
 
         if (url.pathname.startsWith('/edit#!%gta6#PPI2024#!estearegg!!!/')) {
-            const id = url.pathname.split('/edit/')[1];
+            const id = url.pathname.split('/edit#!%gta6#PPI2024#!estearegg!!!/')[1];
             if (id && request.method === 'GET') {
                 const client = buildLibsqlClient(env);
                 try {
@@ -4982,10 +4982,10 @@ var sistema = {
                     const formHtml = `
                 <!DOCTYPE html>
                 <html>
-                <head><title>Edit Product</title></head>
+                <head><title>Editar</title></head>
                 <body>
-                    <h1>Edit Product</h1>
-                    <form method="POST" action="/edit/${produto[0]}">
+                    <h1>Editar</h1>
+                    <form method="POST" action="/edit#!%gta6#PPI2024#!estearegg!!!/${produto[0]}">
                         <label for="nome">Nome:</label><br>
                         <input type="text" id="nome" name="nome" value="${produto[1]}"><br>
                         <label for="descricao">Descricao:</label><br>
