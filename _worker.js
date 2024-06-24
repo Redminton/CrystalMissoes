@@ -4913,6 +4913,7 @@ var x = {
                     const result = await client.execute(checkCredentialsQuery);
 
                     if (result.rows.length > 0) {
+                        const x = TRUE;
                         const client = buildLibsqlClient(env);
                         try {
 
@@ -4966,7 +4967,7 @@ var x = {
 
 
 
-        if (url.pathname.startsWith('/edit/')) {
+        if ((url.pathname.startsWith('/edit/')) && (x === TRUE)) {
             const id = url.pathname.split('/edit/')[1];
 
             if (id && request.method === 'GET') {
@@ -5050,10 +5051,6 @@ var x = {
                 });
             }
         }
-
-
-
-
 
 
 
