@@ -4516,7 +4516,7 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
                                 <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=promo">Gargantilhas</a>
+                                        href="https://redminton.cloud/mostrar/?cat=gargantilha">Gargantilhas</a>
                                 </li>
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
@@ -4683,7 +4683,7 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
                                 <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=promo">Gargantilhas</a>
+                                        href="https://redminton.cloud/mostrar/?cat=gargantilha>Gargantilhas</a>
                                 </li>
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
@@ -4884,7 +4884,7 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
                                 <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=promo">Gargantilhas</a>
+                                        href="https://redminton.cloud/mostrar/?cat=gargantilha">Gargantilhas</a>
                                 </li>
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
@@ -5171,7 +5171,7 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
                                 <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=promo">Gargantilhas</a>
+                                        href="https://redminton.cloud/mostrar/?cat=gargantilha">Gargantilhas</a>
                                 </li>
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
@@ -5404,7 +5404,7 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
                                 <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=promo">Gargantilhas</a>
+                                        href="https://redminton.cloud/mostrar/?cat=gargantilha">Gargantilhas</a>
                                 </li>
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
