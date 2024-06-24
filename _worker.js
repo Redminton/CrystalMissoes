@@ -4459,7 +4459,7 @@ function _createClient3(config) {
 
 
 
-var sistema = {
+var sistema1 = {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
@@ -5671,5 +5671,5 @@ function buildLibsqlClient(env) {
     return createClient({ url, authToken });
 }
 export {
-    sistema as default
+    sistema1 as default
 };
