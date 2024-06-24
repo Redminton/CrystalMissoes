@@ -4756,7 +4756,7 @@ var sistema = {
             <footer id="rodape" class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item te"><a href="https://redminton.cloud" class="nav-link px-2 text-white ">Início</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="../mostrartudo/" class="nav-link px-2 text-white ">Produtos</a></li>
                     <li class="nav-item"><a href="../about" class="nav-link px-2 text-white ">Sobre</a></li>
                     <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
                 </ul>
@@ -5003,7 +5003,7 @@ var sistema = {
             <footer id="rodape" class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item te"><a href="https://redminton.cloud" class="nav-link px-2 text-white ">Início</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="../mostrartudo/" class="nav-link px-2 text-white ">Produtos</a></li>
                     <li class="nav-item"><a href="../about" class="nav-link px-2 text-white ">Sobre</a></li>
                     <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
                 </ul>
@@ -5283,7 +5283,7 @@ var sistema = {
             <footer id="rodape" class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item te"><a href="https://redminton.cloud" class="nav-link px-2 text-white ">Início</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="../mostrartudo/" class="nav-link px-2 text-white ">Produtos</a></li>
                     <li class="nav-item"><a href="../about" class="nav-link px-2 text-white ">Sobre</a></li>
                     <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
                 </ul>
@@ -5462,7 +5462,7 @@ var sistema = {
             <footer id="rodape" class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item te"><a href="https://redminton.cloud" class="nav-link px-2 text-white ">Início</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="../mostrartudo/" class="nav-link px-2 text-white ">Produtos</a></li>
                     <li class="nav-item"><a href="../about" class="nav-link px-2 text-white ">Sobre</a></li>
                     <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
                 </ul>
