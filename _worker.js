@@ -4887,26 +4887,6 @@ var x = {
 
         /*    if (url.pathname.startsWith('/teste/')) {
               if (request.method === 'GET') {
-                 const client = buildLibsqlClient(env);
-                  try {
-                     const result = await client.execute("SELECT * FROM Produtos");
-                      if (!Array.isArray(result.rows)) {
-  
-                          throw new Error('Unexpected result format');
-                      }
-                      const rows = result.rows;
-  
-                      let html = '<!DOCTYPE html><html><head><title>Results</title></head><body>';
-                      html += '<table border="1"><tr><th>IDProduto</th><th>Nome</th>'
-                      html += '<th>Descricao</th><th>Categoria</th><th>Preco</th>'
-                      html += '<th>quantidade</th></tr>';
-                      for (const row of rows) {
-                          html += `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}
-                          </td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
-                          </tr>`;
-                      }
-                      html += '</table></body></html>';
-                      
         const client = buildLibsqlClient(env);
         try {
             const result = await client.execute("SELECT * FROM Produtos");
@@ -5112,72 +5092,22 @@ if (url.pathname.startsWith('/login/')) {
             console.log("Executing query:", checkCredentialsQuery);
             const result = await client.execute(checkCredentialsQuery);
 
-            if (result.rows.length > 0) {
-                let html = `<!DOCTYPE html>
-<html lang="pt-br">
+            if (result.rows.length > 0) { 
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crystal Missões</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="../css/cssindex.css" rel="stylesheet">
-
-</head>
-
-
-
-<body>
-  <div class="container">
-    <form action="/teste/" method="post">
-        <label for="nome">Nome do Produto:</label><br>
-        <input type="text" id="nome" name="nome"><br>
-        <label for="quantidade">Quantidade:</label><br>
-        <input type="number' id="quantidade" name="quantidade"><br>
-        <label for="preco">preco</label><br>
-        <input type="text" id="preco" name="preco"><br>
-        <label for="descricao">descrição</label><br>
-        <input type="text" id="descricao" name="descricao"><br>
-        <label for="imagem">imagem</label><br> 
-        <input type="text" id="imagem" name="imagem"><br>
-        <label for="categoria">Categoria</label><br>
-        <select class="form-control-dark"  id="categoria" name="categoria">
-          <option value="promo">Promoções</option>
-          <option value="colar">Colares</option>
-          <option value="anel">Anéis</option>
-          <option value="brinco">Brincos</option>
-          <option value="gargantilha">Gargantilhas</option>
-          <option value="pulseira">Pulseiras</option>
-          <option value="conjunto">Conjuntos</option>
-          <option value="acessorio">Acessórios</option>
-          <option value="masculino">Masculinos</option>
-        </select><br><br>
-        <input type="submit" value="Enviar">
-    </form>
-  </div>
-</body>
+               acesso = ``
 
 
 
 
-  <a href="https://redminton.cloud/teste/">Teste</a>
-
-  
 
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
- 
-  
-  
-  </body>
-  
-  </html>`;
 
-                return new Response(html, {
+
+
+
+
+                return new Response(acesso, {
                     status: 200,
                     headers: { "Content-Type": "text/html" }
                 });
