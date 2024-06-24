@@ -4943,7 +4943,7 @@ var sistema = {
         <input type="text" id="imagem" name="imagem"><br>
         <label for="categoria">Categoria</label><br>
         <select class="form-control-dark"  id="categoria" name="categoria">
-          <option value="promo">Promocao/option>
+          <option value="promo">Promocao</option>
           <option value="colar">Colares</option>
           <option value="anel">Aneis</option>
           <option value="brinco">Brincos</option>
