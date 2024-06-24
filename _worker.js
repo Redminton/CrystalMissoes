@@ -4991,12 +4991,44 @@ var sistema = {
             </div>
         </header>
                             <body>
-                             <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Modificar</th></tr>`;
+                                <div class="container" >
+                                    <table class="table table-striped table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>ID Produto</th>
+                                                <th>Nome</th>
+                                                <th>Descrição</th>
+                                                <th>Categoria</th>
+                                                <th>Preço</th>
+                                                <th>Quantidade</th>
+                                                <th>Modificar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            `;
                             for (const row of rows) {
-                                acesso += ` <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
-                             <td><a href="/editppieastereggboanoite/${row[0]}">Editar</a> | <a href="/deleteppieastereggboanoite/${row[0]}">Deletar</a></td></tr>`
+                                acesso += `
+        <tr>
+            <td>${row[0]}</td>
+            <td>${row[1]}</td>
+            <td>${row[5]}</td>
+            <td>${row[3]}</td>
+            <td>${row[4]}</td>
+            <td>${row[2]}</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/editppieastereggboanoite/${row[0]}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="/deleteppieastereggboanoite/${row[0]}">Deletar</a>
+            </td>
+        </tr>
+    `;
                             }
-                            acesso += `</table>
+                            acesso += `
+                                        </tbody>
+                                    </table>
+</div >
+
+
+
                             <br>
                             <div class="container">
     <form action="/insertppieastereggboanoite/" method="POST">
