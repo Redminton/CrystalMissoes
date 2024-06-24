@@ -4466,10 +4466,163 @@ var sistema = {
 
 
 
+        if (url.pathname.startsWith('/mostrartudo/')) {
+            const client = buildLibsqlClient(env);
+            try {
+
+                const result = await client.execute(`SELECT * FROM Produtos`);
+
+                if (!result.rows) {
+                    throw new Error('Unexpected result format');
+                }
+                const rows = result.rows;
+
+                let html = ` <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Missões tudo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../css/cssindex.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="p-3">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="https://redminton.cloud"
+                        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <div class="bi me-2" role="img" aria-label="Bootstrap">
+                            <img src="../imagens/Crystal Missões (2).png" width="300rem" />
+                        </div>
+                    </a>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="https://redminton.cloud" class="nav-link px-2 text-white">Início</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px-2 text-white" id="produtosDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Produtos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="produtosDropdown">
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=promo">Promoções</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=colar">Colares</a></li>
+                                <li><a class="dropdown-item" href="https://redminton.cloud/mostrar/?cat=anel">Anéis</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=promo">Gargantilhas</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=conjunto">Conjuntos</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../about.html" class="nav-link px-2 text-white">Sobre</a></li>
+                        <li><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
+                    </ul>
+                    <div class="text-end">
+                        <button onclick="window.location.href='../login.html'" type="button" class="btn btn-warning">Minha
+                            Conta</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+<body>
+        <div class="d-flex justify-content-center">
+            <div class="row">
+`;
+
+                for (const row of rows) {
+                    const quantidade = row[2];
+                    if (quantidade >= 1) {
+                        html += `
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card m-3">
+                        <img src="../imagens/${row[6]}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">${row[1]}</h4>
+                            <h5>R$ ${row[4]} <span style="font-size: smaller; color: red;">10x de R$ ${(row[4] / 10).toFixed(2)}</span></h5>
+                            <p id="menor" class="card-text">${row[5]}</p>
+                            <div class="text-center">
+                                <a href="produtoInfo.html?id=${row[0]}" class="btn btn-primary">Mais Informações</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    `;
+                    }
+                }
+
+                html += `
+            </div>
+        </div>
+    </div>
+    <div id="contato" class="container mt-5">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="card-title">Contato</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Telefone:</strong> (55) 99951-8773
+                    </p>
+                    <p class="card-text">
+                        <strong>Email:</strong> contato@redminton.cloud
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <footer id="rodape" class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item te"><a href="https://redminton.cloud" class="nav-link px-2 text-white ">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="../about" class="nav-link px-2 text-white ">Sobre</a></li>
+                    <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
+                </ul>
+                <p class="text-center"> 2024 Crystal Missões Powered By
+                    <a class="text-white nav-item" href="https://redminton.github.io">Redminton.cloud</a>
+                </p>
+            </footer>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybByi0jFzvPpf8TnxFb13FYfsyHelyzZ4p1IdP8M0yNfQdK7z"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Q5A6iKXZir8bYhRVF0T7ScXKfq6ZQFl39AxxDy7SDEsvH8UYK/nlEV+XWf0Q69H5"
+        crossorigin="anonymous"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+</html>
+`;
+                return new Response(html, {
+                    status: 200,
+                    headers: { "Content-Type": "text/html" }
+                });
+            } catch (error) {
+                console.error("Error executing SQL query:", error);
 
 
-
-
+                return new Response('<h1>Internal Server Error</h1>', {
+                    status: 500,
+                    headers: { "Content-Type": "text/html" }
+                });
+            }
+        }
 
 
 
@@ -4483,14 +4636,14 @@ var sistema = {
 
                 const client = buildLibsqlClient(env);
                 try {
-                    // Executa a consulta SQL para buscar todos os produtos
+
                     const result = await client.execute(`SELECT * FROM Produtos WHERE categoria = '${categoria}'`);
-                    // Verifica se o resultado tem uma propriedade 'rows' que é iterável
+
                     if (!result.rows) {
                         throw new Error('Unexpected result format');
                     }
                     const rows = result.rows;
-                    // Converte os resultados da consulta em uma string HTML
+
                     let html = ` <!DOCTYPE html>
 <html lang="pt-br">
 <head>
