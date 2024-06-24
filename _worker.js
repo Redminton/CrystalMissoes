@@ -4965,7 +4965,7 @@ var sistema = {
 
 
 
-        if (url.pathname.startsWith('/edit/') ) {
+        if (url.pathname.startsWith('/edit/')) {
             const id = url.pathname.split('/edit/')[1];
             if (id && request.method === 'GET') {
                 console.log(x);
