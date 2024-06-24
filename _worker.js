@@ -4911,10 +4911,10 @@ var x = {
                     const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
                     console.log("Executing query:", checkCredentialsQuery);
                     const result = await client.execute(checkCredentialsQuery);
-                    let x = FALSE;
+                    let x = 0;
                     if (result.rows.length > 0) {
-                        console.log(X);
-                         x = TRUE;
+                        console.log(x);
+                         x = 1;
                         const client = buildLibsqlClient(env);
                         try {
 
@@ -4968,7 +4968,7 @@ var x = {
 
 
 
-        if ((url.pathname.startsWith('/edit/')) && (x === TRUE)) {
+        if ((url.pathname.startsWith('/edit/')) && (x === 1)) {
             console.log(x);
             const id = url.pathname.split('/edit/')[1];
 
