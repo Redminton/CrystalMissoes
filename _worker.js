@@ -5156,7 +5156,7 @@ var sistema = {
                     const produto = result.rows[0];
 
                     const formHtml = `
-              <   <!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
