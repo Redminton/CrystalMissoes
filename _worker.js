@@ -4910,7 +4910,7 @@ var sistema = {
                     const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
                     console.log("Executing query:", checkCredentialsQuery);
                     const result = await client.execute(checkCredentialsQuery);
-                  
+
                     if (result.rows.length > 0) {
                         const client = buildLibsqlClient(env);
                         try {
@@ -4927,7 +4927,36 @@ var sistema = {
                                 acesso += ` <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
                              <td><a href="/editppieastereggboanoite/${row[0]}">Editar</a> | <a href="/deleteppieastereggboanoite/${row[0]}">Deletar</a></td></tr>`
                             }
-                            acesso += `</table></body></html>`;
+                            acesso += `</table>
+                            <br>
+                            <div class="container">
+    <form action="/insertppieastereggboanoite/" method="post">
+        <label for="nome">Nome do Produto:</label><br>
+        <input type="text" id="nome" name="nome"><br>
+        <label for="quantidade">Quantidade:</label><br>
+        <input type="number' id="quantidade" name="quantidade"><br>
+        <label for="preco">preco</label><br>
+        <input type="text" id="preco" name="preco"><br>
+        <label for="descricao">descrição</label><br>
+        <input type="text" id="descricao" name="descricao"><br>
+        <label for="imagem">imagem</label><br>
+        <input type="text" id="imagem" name="imagem"><br>
+        <label for="categoria">Categoria</label><br>
+        <select class="form-control-dark"  id="categoria" name="categoria">
+          <option value="promo">Promoções</option>
+          <option value="colar">Colares</option>
+          <option value="anel">Anéis</option>
+          <option value="brinco">Brincos</option>
+          <option value="gargantilha">Gargantilhas</option>
+          <option value="pulseira">Pulseiras</option>
+          <option value="conjunto">Conjuntos</option>
+          <option value="acessorio">Acessórios</option>
+          <option value="masculino">Masculinos</option>
+        </select><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+  </div>
+                            </body></html>`;
 
 
                             return new Response(acesso, {
@@ -5047,8 +5076,45 @@ var sistema = {
             }
         }
 
+        if (url.pathname.startsWith('/insertppieastereggboanoite/')){
+            const formData = await request.formData();
+            const nome = formData.get('nome');
+            const descricao = formData.get('descricao');
+            const imagem = formData.get('imagem');
+            const categoria = formData.get('categoria');
+            const preco = formData.get('preco');
+            const quantidade = formData.get('quantidade');
+            const client = buildLibsqlClient(env);
+            try {
+
+
+            const result = await client.execute(
+                `INSERT INTO Produtos (Nome, Descricao, imagem, Categoria, Preco, Quantidade) VALUES ('${nome}', '${descricao}', '${imagem}', '${categoria}', ${preco}, ${quantidade})` );
+
+            // Check if the insert was successful
+            if (result.rowsAffected > 0) {
+                return new Response('<h1>Produto inserido com sucesso!</h1>', {
+                    status: 200,
+                    headers: { "Content-Type": "text/html" }
+                });
+            } else {
+                throw new Error('Falha ao inserir o produto');
+            }
+        } catch (error) {
+            console.error("Error executing SQL insert:", error);
+
+            // Respond with an error message in case of a failure
+            return new Response('<h1>Internal Server Error</h1>', {
+                status: 500,
+                headers: { "Content-Type": "text/html" }
+            });
+        }
+    }
+        
+
+
         if (url.pathname.startsWith('/deleteppieastereggboanoite/')) {
-            const id = url.pathname.split('/').pop(); 
+            const id = url.pathname.split('/').pop();
             const client = buildLibsqlClient(env);
             try {
                 const result = await client.execute(`DELETE FROM Produtos WHERE IDProdutos = ${id}`);
