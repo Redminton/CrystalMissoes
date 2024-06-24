@@ -4459,7 +4459,7 @@ function _createClient3(config) {
 
 
 
-var x = {
+var sistema = {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
@@ -4913,7 +4913,6 @@ var x = {
                     const result = await client.execute(checkCredentialsQuery);
                     let x = 0;
                     if (result.rows.length > 0) {
-                        console.log(x);
                          x = 1;
                         const client = buildLibsqlClient(env);
                         try {
@@ -5082,5 +5081,5 @@ function buildLibsqlClient(env) {
     return createClient({ url, authToken });
 }
 export {
-    x as default
+    sistema as default
 };
