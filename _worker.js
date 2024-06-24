@@ -4925,7 +4925,7 @@ var sistema = {
                              <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
                             for (const row of rows) {
                                 acesso += ` <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
-                             <td><a href="/edit#!%gta6#PPI2024#!estearegg!!!/${row[0]}">Editar</a> | <a href="/delete/${row[0]}">Deletar</a></td></tr>`
+                             <td><a href="/edit#!%gta6#PPI2024#!/${row[0]}">Editar</a> | <a href="/delete/${row[0]}">Deletar</a></td></tr>`
                             }
                             acesso += `</table></body></html>`;
 
@@ -4963,8 +4963,8 @@ var sistema = {
 
 
 
-        if (url.pathname.startsWith('/edit#!%gta6#PPI2024#!estearegg!!!/')) {
-            const id = url.pathname.split('/edit#!%gta6#PPI2024#!estearegg!!!/')[1];
+        if (url.pathname.startsWith('/edit#!%gta6#PPI2024#!/')) {
+            const id = url.pathname.split('/edit#!%gta6#PPI2024#!/')[1];
             if (id && request.method === 'GET') {
                 const client = buildLibsqlClient(env);
                 try {
@@ -4985,7 +4985,7 @@ var sistema = {
                 <head><title>Editar</title></head>
                 <body>
                     <h1>Editar</h1>
-                    <form method="POST" action="/edit#!%gta6#PPI2024#!estearegg!!!/${produto[0]}">
+                    <form method="POST" action="/edit#!%gta6#PPI2024#!/${produto[0]}">
                         <label for="nome">Nome:</label><br>
                         <input type="text" id="nome" name="nome" value="${produto[1]}"><br>
                         <label for="descricao">Descricao:</label><br>
