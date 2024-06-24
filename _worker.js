@@ -4972,7 +4972,7 @@ var x = {
             if (id && request.method === 'GET') {
                 const client = buildLibsqlClient(env);
                 try {
-                    const result = await client.execute(`SELECT * FROM Produtos WHERE IDProduto = ?`, [id]);
+                    const result = await client.execute(`SELECT * FROM Produtos WHERE IDProduto = ${id}`);
 
                     if (!result.rows || result.rows.length === 0) {
                         return new Response('<h1>Product not found</h1>', {
@@ -5030,8 +5030,7 @@ var x = {
 
                 const client = buildLibsqlClient(env);
                 try {
-                    await client.execute(`UPDATE Produtos SET Nome = ?, Descricao = ?, imagem = ?, Categoria = ?, Preco = ?, Quantidade = ? WHERE IDProduto = ?`,
-                        [nome, descricao, imagem,  categoria, preco, quantidade, id]);
+                    await client.execute(`UPDATE Produtos SET Nome = '${nome}', Descricao = '${descricao}', imagem = '${imagem}', Categoria = '${categoria}', Preco = ${preco}, Quantidade = ${quantidade} WHERE IDProduto = ${id}`);
 
                     return new Response('<h1>Product Updated Successfully</h1>', {
                         status: 200,
