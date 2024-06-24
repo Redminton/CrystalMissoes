@@ -4925,7 +4925,7 @@ var sistema = {
                              <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
                             for (const row of rows) {
                                 acesso += ` <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
-                             <td><a href="/editppieastereggboanoite/${row[0]}">Editar</a> | <a href="/delete/${row[0]}">Deletar</a></td></tr>`
+                             <td><a href="/editppieastereggboanoite/${row[0]}">Editar</a> | <a href="/deleteppieastereggboanoite/${row[0]}">Deletar</a></td></tr>`
                             }
                             acesso += `</table></body></html>`;
 
@@ -5042,6 +5042,31 @@ var sistema = {
             } else {
                 return new Response('<h1>Invalid Product ID</h1>', {
                     status: 400,
+                    headers: { "Content-Type": "text/html" }
+                });
+            }
+        }
+
+        if (url.pathname.startsWith('/deleteppieastereggboanoite/')) {
+            const id = url.pathname.split('/').pop(); 
+            const client = buildLibsqlClient(env);
+            try {
+                const result = await client.execute(`DELETE FROM Produtos WHERE IDProdutos = ${id}`);
+                if (result.rowsAffected === 1) {
+                    return new Response('<h1>Produto deletado com sucesso!</h1><a href="/">Voltar à lista de produtos</a>', {
+                        status: 200,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                } else {
+                    return new Response('<h1>Produto não encontrado</h1>', {
+                        status: 404,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
+            } catch (error) {
+                console.error("Error executing delete query:", error);
+                return new Response('<h1>Internal Server Error</h1>', {
+                    status: 500,
                     headers: { "Content-Type": "text/html" }
                 });
             }
