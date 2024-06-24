@@ -5026,37 +5026,53 @@ var sistema = {
                                         </tbody>
                                     </table>
 </div >
-
-
-
                             <br>
-                            <div class="container">
+                           <div class="container">
     <form action="/insertppieastereggboanoite/" method="POST">
-        <label for="nome">Nome do Produto:</label><br>
-        <input type="text" id="nome" name="nome"><br>
-        <label for="quantidade">Quantidade:</label><br>
-        <input type="number' id="quantidade" name="quantidade"><br>
-        <label for="preco">preco</label><br>
-        <input type="text" id="preco" name="preco"><br>
-        <label for="descricao">descricao</label><br>
-        <input type="text" id="descricao" name="descricao"><br>
-        <label for="imagem">imagem</label><br>
-        <input type="text" id="imagem" name="imagem"><br>
-        <label for="categoria">Categoria</label><br>
-        <select class="form-control-dark"  id="categoria" name="categoria">
-          <option value="promo">Promocao</option>
-          <option value="colar">Colares</option>
-          <option value="anel">Aneis</option>
-          <option value="brinco">Brincos</option>
-          <option value="gargantilha">Gargantilhas</option>
-          <option value="pulseira">Pulseiras</option>
-          <option value="conjunto">Conjuntos</option>
-          <option value="acessorio">Acessorios</option>
-          <option value="masculino">Masculinos</option>
-        </select><br><br>
-        <input type="submit" value="Enviar">
+        <div class="form-group">
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" class="form-control" id="nome" name="nome">
+        </div>
+
+        <div class="form-group">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" class="form-control" id="quantidade" name="quantidade">
+        </div>
+
+        <div class="form-group">
+            <label for="preco">Preço:</label>
+            <input type="text" class="form-control" id="preco" name="preco">
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <input type="text" class="form-control" id="descricao" name="descricao">
+        </div>
+
+        <div class="form-group">
+            <label for="imagem">Imagem:</label>
+            <input type="text" class="form-control" id="imagem" name="imagem">
+        </div>
+
+        <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <select class="form-control" id="categoria" name="categoria">
+                <option value="promo">Promoção</option>
+                <option value="colar">Colares</option>
+                <option value="anel">Anéis</option>
+                <option value="brinco">Brincos</option>
+                <option value="gargantilha">Gargantilhas</option>
+                <option value="pulseira">Pulseiras</option>
+                <option value="conjunto">Conjuntos</option>
+                <option value="acessorio">Acessórios</option>
+                <option value="masculino">Masculinos</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
-  </div>
+</div>
+
                             </body></html>`;
 
 
