@@ -5036,7 +5036,7 @@ var sistema = {
 
         <div class="form-group">
             <label for="quantidade">Quantidade:</label>
-            <input type="number" class="form-control" id="quantidade" name="quantidade">
+            <input type="number" class="form-control" id="quantidade" name="quantidade" min="0">
         </div>
 
         <div class="form-group">
@@ -5068,7 +5068,7 @@ var sistema = {
                 <option value="masculino">Masculinos</option>
             </select>
         </div>
-
+<br>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>
