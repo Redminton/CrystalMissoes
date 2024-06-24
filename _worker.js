@@ -5094,7 +5094,7 @@ if (url.pathname.startsWith('/login/')) {
 
             if (result.rows.length > 0) { 
 
-              
+                const rows = result.rows;
                 let acesso = `<!DOCTYPE html><html><head><title>Results</title></head><body>
                <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
                for (const row of rows) {
