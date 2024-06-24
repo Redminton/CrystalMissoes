@@ -5230,7 +5230,13 @@ var sistema = {
 
             // Check if the insert was successful
             if (result.rowsAffected > 0) {
-                return new Response('<h1>Produto inserido com sucesso!</h1>', {
+                return new Response(`<h1>Produto inserido com sucesso!</h1>
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://redminton.cloud"; 
+        }, 2000); 
+    </script>`, 
+                    {
                     status: 200,
                     headers: { "Content-Type": "text/html" }
                 });
