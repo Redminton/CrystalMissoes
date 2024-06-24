@@ -4921,8 +4921,8 @@ var sistema = {
                                 throw new Error('Unexpected result format');
                             }
                             const rows = result.rows;
-                            let acesso = `<!DOCTYPE html><html><head><title>Results</title></head><body>
-                             <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
+                            let acesso = `<!DOCTYPE html><html><head><title>CRUD</title></head><body>
+                             <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Modificar</th></tr>`;
                             for (const row of rows) {
                                 acesso += ` <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
                              <td><a href="/editppieastereggboanoite/${row[0]}">Editar</a> | <a href="/deleteppieastereggboanoite/${row[0]}">Deletar</a></td></tr>`
@@ -4937,20 +4937,20 @@ var sistema = {
         <input type="number' id="quantidade" name="quantidade"><br>
         <label for="preco">preco</label><br>
         <input type="text" id="preco" name="preco"><br>
-        <label for="descricao">descrição</label><br>
+        <label for="descricao">descricao</label><br>
         <input type="text" id="descricao" name="descricao"><br>
         <label for="imagem">imagem</label><br>
         <input type="text" id="imagem" name="imagem"><br>
         <label for="categoria">Categoria</label><br>
         <select class="form-control-dark"  id="categoria" name="categoria">
-          <option value="promo">Promoções</option>
+          <option value="promo">Promocao/option>
           <option value="colar">Colares</option>
-          <option value="anel">Anéis</option>
+          <option value="anel">Aneis</option>
           <option value="brinco">Brincos</option>
           <option value="gargantilha">Gargantilhas</option>
           <option value="pulseira">Pulseiras</option>
           <option value="conjunto">Conjuntos</option>
-          <option value="acessorio">Acessórios</option>
+          <option value="acessorio">Acessorios</option>
           <option value="masculino">Masculinos</option>
         </select><br><br>
         <input type="submit" value="Enviar">
@@ -5119,7 +5119,7 @@ var sistema = {
             try {
                 const result = await client.execute(`DELETE FROM Produtos WHERE IDProdutos = ${id}`);
                 if (result.rowsAffected === 1) {
-                    return new Response('<h1>Produto deletado com sucesso!</h1><a href="/">Voltar à lista de produtos</a>', {
+                    return new Response('<h1>Produto deletado com sucesso!</h1><a href="/">Voltar a lista de produtos</a>', {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
                     });
