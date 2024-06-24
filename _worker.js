@@ -5252,6 +5252,7 @@ var sistema = {
                 <label for="quantidade">Quantidade:</label>
                 <input type="text" class="form-control" id="quantidade" name="quantidade" value="${produto[2]}">
             </div>
+            <br>
             <button type="submit" class="btn btn-primary">Atualizar</button>
         </form>
     </div>
@@ -5304,7 +5305,12 @@ var sistema = {
                 try {
                     await client.execute(`UPDATE Produtos SET Nome = '${nome}', Descricao = '${descricao}', imagem = '${imagem}', Categoria = '${categoria}', Preco = ${preco}, Quantidade = ${quantidade} WHERE IDProdutos = ${id}`);
 
-                    return new Response('<h1>Product Updated Successfully</h1>', {
+                    return new Response(`<h1>Produto editado com sucesso!</h1>
+                        <script>
+                        setTimeout(function () {
+                            window.location.href = "https://redminton.cloud";
+                        }, 1000); 
+    </script>`, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
                     });
