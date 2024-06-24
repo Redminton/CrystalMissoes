@@ -4995,7 +4995,7 @@ var sistema = {
                                     <table class="table table-striped table-bordered">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>ID Produto</th>
+                                                <th>ID</th>
                                                 <th>Nome</th>
                                                 <th>Descrição</th>
                                                 <th>Categoria</th>
