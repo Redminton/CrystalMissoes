@@ -4686,7 +4686,6 @@ var sistema = {
                         <li><a href="../about.html" class="nav-link px-2 text-white">Sobre</a></li>
                         <li><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
                     </ul>
-
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                         <input type="search" class="form-control form-control-dark text-start"
                             placeholder="Pesquisar..." aria-label="Search">
@@ -4911,10 +4910,10 @@ var sistema = {
                     const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
                     console.log("Executing query:", checkCredentialsQuery);
                     const result = await client.execute(checkCredentialsQuery);
-                    let x = 0;
+                  
                     if (result.rows.length > 0) {
-                        x = 1;
-                        console.log(x);
+                
+                        
                         const client = buildLibsqlClient(env);
                         try {
 
@@ -4968,7 +4967,7 @@ var sistema = {
 
 
 
-        if ((url.pathname.startsWith('/edit/')) && (x === 1)) {
+        if (url.pathname.startsWith('/edit/') ) {
             const id = url.pathname.split('/edit/')[1];
             if (id && request.method === 'GET') {
                 console.log(x);
