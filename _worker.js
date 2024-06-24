@@ -4925,7 +4925,7 @@ var sistema = {
                              <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
                             for (const row of rows) {
                                 acesso += ` <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
-                             <td><a href="/edit/${row[0]}">Editar</a> | <a href="/delete/${row[0]}">Deletar</a></td></tr>`
+                             <td><a href="/edit#!%gta6#PPI2024#!estearegg!!!/${row[0]}">Editar</a> | <a href="/delete/${row[0]}">Deletar</a></td></tr>`
                             }
                             acesso += `</table></body></html>`;
 
@@ -4963,7 +4963,7 @@ var sistema = {
 
 
 
-        if (url.pathname.startsWith('/edit/')) {
+        if (url.pathname.startsWith('/edit#!%gta6#PPI2024#!estearegg!!!/')) {
             const id = url.pathname.split('/edit/')[1];
             if (id && request.method === 'GET') {
                 const client = buildLibsqlClient(env);
