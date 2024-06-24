@@ -4969,9 +4969,9 @@ var x = {
 
 
         if ((url.pathname.startsWith('/edit/')) && (x === 1)) {
-            console.log(x);
             const id = url.pathname.split('/edit/')[1];
             if (id && request.method === 'GET') {
+                console.log(x);
                 const client = buildLibsqlClient(env);
                 try {
                     const result = await client.execute(`SELECT * FROM Produtos WHERE IDPRODUTOS = ${id}`);
