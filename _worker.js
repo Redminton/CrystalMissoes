@@ -4524,8 +4524,8 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=conjunto">Conjuntos</a>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>
+                                <!--<li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>-->
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
                             </ul>
@@ -4691,8 +4691,8 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=conjunto">Conjuntos</a>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>
+                                  <!--<li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>-->
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
                             </ul>
@@ -4892,8 +4892,8 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=conjunto">Conjuntos</a>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>
+                                <!--  <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>-->
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
                             </ul>
@@ -5179,8 +5179,8 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=conjunto">Conjuntos</a>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>
+                                  <!--<li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>-->
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
                             </ul>
@@ -5412,8 +5412,8 @@ var sistema = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=conjunto">Conjuntos</a>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>
+                               <!--   <li><a class="dropdown-item"
+                                        href="https://redminton.cloud/mostrar/?cat=acessorio">Acessórios</a></li>-->
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=masculino">Masculinos</a></li>
                             </ul>
