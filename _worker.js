@@ -4912,8 +4912,6 @@ var sistema = {
                     const result = await client.execute(checkCredentialsQuery);
                   
                     if (result.rows.length > 0) {
-                
-                        
                         const client = buildLibsqlClient(env);
                         try {
 
