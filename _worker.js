@@ -4476,7 +4476,6 @@ var sistema = {
 
 
 
-
         if (url.pathname.startsWith('/mostrar/')) {
             if (request.method === 'GET') {
                 const urlSearchParams = new URL(request.url).searchParams;
