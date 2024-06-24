@@ -5213,7 +5213,7 @@ var sistema = {
             }
         }
 
-        if (url.pathname.startsWith('/insertppieastereggboanoite/')){
+        if (url.pathname.startsWith('/insertppieastereggboanoite/')) {
             const formData = await request.formData();
             const nome = formData.get('nome');
             const descricao = formData.get('descricao');
@@ -5225,35 +5225,35 @@ var sistema = {
             try {
 
 
-            const result = await client.execute(
-                `INSERT INTO Produtos (Nome, Descricao, imagem, Categoria, Preco, Quantidade) VALUES ('${nome}', '${descricao}', '${imagem}', '${categoria}', ${preco}, ${quantidade})` );
+                const result = await client.execute(
+                    `INSERT INTO Produtos (Nome, Descricao, imagem, Categoria, Preco, Quantidade) VALUES ('${nome}', '${descricao}', '${imagem}', '${categoria}', ${preco}, ${quantidade})`);
 
-            // Check if the insert was successful
-            if (result.rowsAffected > 0) {
-                return new Response(`<h1>Produto inserido com sucesso!</h1>
+                // Check if the insert was successful
+                if (result.rowsAffected > 0) {
+                    return new Response(`<h1>Produto inserido com sucesso!</h1>
     <script>
         setTimeout(function() {
             window.location.href = "https://redminton.cloud"; 
-        }, 2000); 
-    </script>`, 
-                    {
-                    status: 200,
+        }, 1000); 
+    </script>`,
+                        {
+                            status: 200,
+                            headers: { "Content-Type": "text/html" }
+                        });
+                } else {
+                    throw new Error('Falha ao inserir o produto');
+                }
+            } catch (error) {
+                console.error("Error executing SQL insert:", error);
+
+                // Respond with an error message in case of a failure
+                return new Response('<h1>Internal Server Error</h1>', {
+                    status: 500,
                     headers: { "Content-Type": "text/html" }
                 });
-            } else {
-                throw new Error('Falha ao inserir o produto');
             }
-        } catch (error) {
-            console.error("Error executing SQL insert:", error);
-
-            // Respond with an error message in case of a failure
-            return new Response('<h1>Internal Server Error</h1>', {
-                status: 500,
-                headers: { "Content-Type": "text/html" }
-            });
         }
-    }
-        
+
 
 
         if (url.pathname.startsWith('/deleteppieastereggboanoite/')) {
@@ -5262,7 +5262,12 @@ var sistema = {
             try {
                 const result = await client.execute(`DELETE FROM Produtos WHERE IDProdutos = ${id}`);
                 if (result.rowsAffected === 1) {
-                    return new Response('<h1>Produto deletado com sucesso!</h1><a href="/">Voltar a lista de produtos</a>', {
+                    return new Response(`<h1>Produto deletado com sucesso!</h1>
+                        <script>
+                        setTimeout(function () {
+                            window.location.href = "https://redminton.cloud";
+                        }, 1000); 
+    </script>`, {
                         status: 200,
                         headers: { "Content-Type": "text/html" }
                     });
