@@ -5197,44 +5197,10 @@ var sistema = {
                 </div>
             </div>
         </header>
-                            <body>
-                                <div class="container" >
-                                    <table class="table table-striped table-bordered">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nome</th>
-                                                <th>Descrição</th>
-                                                <th>Categoria</th>
-                                                <th>Preço</th>
-                                                <th>Quantidade</th>
-                                                <th>Modificar</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            `;
-                            for (const row of rows) {
-                                acesso += `
-        <tr>
-            <td>${row[0]}</td>
-            <td>${row[1]}</td>
-            <td>${row[5]}</td>
-            <td>${row[3]}</td>
-            <td>${row[4]}</td>
-            <td>${row[2]}</td>
-            <td>
-                <a class="btn btn-primary btn-sm" href="/editppieastereggboanoite/${row[0]}">Editar</a>
-                <a class="btn btn-danger btn-sm" href="/deleteppieastereggboanoite/${row[0]}">Deletar</a>
-            </td>
-        </tr>
-    `;
-                            }
-                            acesso += `
-                                        </tbody>
-                                    </table>
-</div >
-                            <br>
-                           <div class="container">
+                        
+        <body>
+
+ <div class="container">
     <form action="/insertppieastereggboanoite/" method="POST">
         <div class="form-group">
             <label for="nome">Nome do Produto:</label>
@@ -5279,6 +5245,80 @@ var sistema = {
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>
+
+
+                                <div class="container" >
+                                    <table class="table table-striped table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nome</th>
+                                                <th>Descrição</th>
+                                                <th>Categoria</th>
+                                                <th>Preço</th>
+                                                <th>Quantidade</th>
+                                                <th>Modificar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            `;
+                            for (const row of rows) {
+                                acesso += `
+        <tr>
+            <td>${row[0]}</td>
+            <td>${row[1]}</td>
+            <td>${row[5]}</td>
+            <td>${row[3]}</td>
+            <td>${row[4]}</td>
+            <td>${row[2]}</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/editppieastereggboanoite/${row[0]}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="/deleteppieastereggboanoite/${row[0]}">Deletar</a>
+            </td>
+        </tr>
+    `;
+                            }
+                            acesso += `
+                                        </tbody>
+                                    </table>
+</div >
+                            <br>
+
+                                <div class="container" >
+                                    <table class="table table-striped table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nome</th>
+                                                <th>Descrição</th>
+                                                <th>Categoria</th>
+                                                <th>Preço</th>
+                                                <th>Quantidade</th>
+                                                <th>Modificar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            `;
+                            for (const row of rows) {
+                                acesso += `
+        <tr>
+            <td>${row[0]}</td>
+            <td>${row[1]}</td>
+            <td>${row[5]}</td>
+            <td>${row[3]}</td>
+            <td>${row[4]}</td>
+            <td>${row[2]}</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/editppieastereggboanoite/${row[0]}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="/deleteppieastereggboanoite/${row[0]}">Deletar</a>
+            </td>
+        </tr>
+    `;
+                            }
+                            acesso += `
+                                        </tbody>
+                                    </table>
+</div >
 <div class="container">
             <footer id="rodape" class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
