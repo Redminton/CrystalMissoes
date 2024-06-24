@@ -5102,8 +5102,6 @@ var sistema = {
                             });
                         } catch (error) {
                             console.error("Error executing SQL query:", error);
-
-                            // Responde com uma mensagem de erro em caso de falha na consulta
                             return new Response('<h1>Internal Server Error</h1>', {
                                 status: 500,
                                 headers: { "Content-Type": "text/html" }
@@ -5111,8 +5109,7 @@ var sistema = {
                         }
                     }
                     else {
-                        // Credentials do not match
-                        return new Response('<h1>Invalid credentials</h1>', {
+                        return new Response('<h1>Errou a Senha Campeão(A)</h1>', {
                             status: 401,
                             headers: { "Content-Type": "text/html" }
                         });
