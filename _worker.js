@@ -4925,7 +4925,7 @@ var x = {
                             let acesso = `<!DOCTYPE html><html><head><title>Results</title></head><body>
                              <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
                             for (const row of rows) {
-                                acesso += `   <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
+                                acesso += ` <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
                              <td><a href="/edit/${row[0]}">Editar</a> | <a href="/delete/${row[0]}">Deletar</a></td></tr>`
                             }
                             acesso += `</table></body></html>`;
@@ -4972,7 +4972,7 @@ var x = {
             if (id && request.method === 'GET') {
                 const client = buildLibsqlClient(env);
                 try {
-                    const result = await client.execute(`SELECT * FROM Produtos WHERE IDProduto = ${id}`);
+                    const result = await client.execute(`SELECT * FROM Produtos WHERE IDPRODUTOS = ${id}`);
 
                     if (!result.rows || result.rows.length === 0) {
                         return new Response('<h1>Product not found</h1>', {
@@ -5030,7 +5030,7 @@ var x = {
 
                 const client = buildLibsqlClient(env);
                 try {
-                    await client.execute(`UPDATE Produtos SET Nome = '${nome}', Descricao = '${descricao}', imagem = '${imagem}', Categoria = '${categoria}', Preco = ${preco}, Quantidade = ${quantidade} WHERE IDProduto = ${id}`);
+                    await client.execute(`UPDATE Produtos SET Nome = '${nome}', Descricao = '${descricao}', imagem = '${imagem}', Categoria = '${categoria}', Preco = ${preco}, Quantidade = ${quantidade} WHERE IDProdutos = ${id}`);
 
                     return new Response('<h1>Product Updated Successfully</h1>', {
                         status: 200,
