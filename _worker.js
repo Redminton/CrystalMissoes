@@ -4930,7 +4930,7 @@ var sistema = {
                             acesso += `</table>
                             <br>
                             <div class="container">
-    <form action="/insertppieastereggboanoite/" method="post">
+    <form action="/insertppieastereggboanoite/" method="POST">
         <label for="nome">Nome do Produto:</label><br>
         <input type="text" id="nome" name="nome"><br>
         <label for="quantidade">Quantidade:</label><br>
