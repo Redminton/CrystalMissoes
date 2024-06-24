@@ -5094,17 +5094,14 @@ if (url.pathname.startsWith('/login/')) {
 
             if (result.rows.length > 0) { 
 
-               acesso = ``
-
-
-
-
-
-
-
-
-
-
+              
+                let acesso = `<!DOCTYPE html><html><head><title>Results</title></head><body>
+               <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>';
+                for (const row of rows) {
+                  <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
+                    <td><a href="/teste/edit/${row[0]}">Editar</a> | <a href="/teste/delete/${row[0]}">Deletar</a></td></tr>
+                }
+               </table></body></html>`
 
 
                 return new Response(acesso, {

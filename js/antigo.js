@@ -70,15 +70,6 @@ if (url.pathname.startsWith('/login/')) {
     </form>
   </div>
 </body>
-
-
-
-
-  <a href="https://redminton.cloud/teste/">Teste</a>
-
-  
-
-
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   </body>
