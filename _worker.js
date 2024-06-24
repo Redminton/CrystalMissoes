@@ -5067,70 +5067,80 @@ return new Response('<h1>Produto inserido com sucesso!</h1>', {
         }
 
 */
-if (url.pathname.startsWith('/login/')) {
-    if (request.method === 'POST') {
-        try {
-            const client = buildLibsqlClient(env);
-            const formData = await request.formData();
-
-            const user = formData.get('user');
-            const senha = formData.get('senha');
-
-            console.log("Received form data:");
-            console.log("user:", user);
-            console.log("senha:", senha);
-
-            if (!user || !senha) {
-                return new Response('<h1>Missing credentials</h1>', {
-                    status: 400,
-                    headers: { "Content-Type": "text/html" }
-                });
-            }
-
-
-            const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
-            console.log("Executing query:", checkCredentialsQuery);
-            const result = await client.execute(checkCredentialsQuery);
-
-            if (result.rows.length > 0) { 
-                const client = buildLibsqlClient(env);
+        if (url.pathname.startsWith('/login/')) {
+            if (request.method === 'POST') {
                 try {
-                    
-                    const result = await client.execute(`SELECT * FROM Produtos`);
-                    
-                    if (!result.rows) {
-                        throw new Error('Unexpected result format');
+                    const client = buildLibsqlClient(env);
+                    const formData = await request.formData();
+
+                    const user = formData.get('user');
+                    const senha = formData.get('senha');
+
+                    console.log("Received form data:");
+                    console.log("user:", user);
+                    console.log("senha:", senha);
+
+                    if (!user || !senha) {
+                        return new Response('<h1>Missing credentials</h1>', {
+                            status: 400,
+                            headers: { "Content-Type": "text/html" }
+                        });
                     }
-                const rows = result.rows;
-                let acesso = `<!DOCTYPE html><html><head><title>Results</title></head><body>
-               <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
-               for (const row of rows) {
-               acesso += `   <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
-                    <td><a href="/teste/edit/${row[0]}">Editar</a> | <a href="/teste/delete/${row[0]}">Deletar</a></td></tr>`
-                }
-               acesso += `</table></body></html>`;
 
 
-                return new Response(acesso, {
-                    status: 200,
-                    headers: { "Content-Type": "text/html" }
-                });
-            } else {
-                // Credentials do not match
-                return new Response('<h1>Invalid credentials</h1>', {
-                    status: 401,
-                    headers: { "Content-Type": "text/html" }
-                });
-            }
-        } catch (error) {
-            console.error("Error checking credentials:", error);
-            return new Response('<h1>Internal Server Error</h1>', {
-                status: 500,
-                headers: { "Content-Type": "text/html" }
-            });
-        }
-    }
+                    const checkCredentialsQuery = `SELECT * FROM credencial WHERE tipo = '${user}' AND chave = '${senha}';`;
+                    console.log("Executing query:", checkCredentialsQuery);
+                    const result = await client.execute(checkCredentialsQuery);
+
+                    if (result.rows.length > 0) {
+                        const client = buildLibsqlClient(env);
+                        try {
+
+                            const result = await client.execute(`SELECT * FROM Produtos`);
+
+                            if (!result.rows) {
+                                throw new Error('Unexpected result format');
+                            }
+                            const rows = result.rows;
+                            let acesso = `<!DOCTYPE html><html><head><title>Results</title></head><body>
+                             <table border="1"><tr><th>IDProduto</th><th>Nome</th><th>Descricao</th><th>Categoria</th><th>Preco</th><th>Quantidade</th><th>Ações</th></tr>`;
+                            for (const row of rows) {
+                                acesso += `   <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[5]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[2]}</td>
+                             <td><a href="/teste/edit/${row[0]}">Editar</a> | <a href="/teste/delete/${row[0]}">Deletar</a></td></tr>`
+                            }
+                            acesso += `</table></body></html>`;
+
+
+                            return new Response(acesso, {
+                                status: 200,
+                                headers: { "Content-Type": "text/html" }
+                            });
+                        } catch(error) {
+                            console.error("Error executing SQL query:", error);
+
+                            // Responde com uma mensagem de erro em caso de falha na consulta
+                            return new Response('<h1>Internal Server Error</h1>', {
+                                status: 500,
+                                headers: { "Content-Type": "text/html" }
+                            });
+                        }
 }
+                         else {
+                        // Credentials do not match
+                        return new Response('<h1>Invalid credentials</h1>', {
+                            status: 401,
+                            headers: { "Content-Type": "text/html" }
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error checking credentials:", error);
+                    return new Response('<h1>Internal Server Error</h1>', {
+                        status: 500,
+                        headers: { "Content-Type": "text/html" }
+                    });
+                }
+            }
+        }
 
 
 
@@ -5141,8 +5151,8 @@ if (url.pathname.startsWith('/login/')) {
 
 
 
-// Serve os assets estáticos para outras requisições
-return env.ASSETS.fetch(request);
+        // Serve os assets estáticos para outras requisições
+        return env.ASSETS.fetch(request);
     },
 };
 
