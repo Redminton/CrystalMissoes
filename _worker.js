@@ -5072,7 +5072,27 @@ var sistema = {
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>
-
+<div class="container">
+            <footer id="rodape" class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item te"><a href="https://redminton.cloud" class="nav-link px-2 text-white ">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white ">Produtos</a></li>
+                    <li class="nav-item"><a href="../about" class="nav-link px-2 text-white ">Sobre</a></li>
+                    <li class="nav-item"><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
+                </ul>
+                <p class="text-center"> 2024 Crystal Missões Powered By
+                    <a class="text-white nav-item" href="https://redminton.github.io">Redminton.cloud</a>
+                </p>
+            </footer>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybByi0jFzvPpf8TnxFb13FYfsyHelyzZ4p1IdP8M0yNfQdK7z"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Q5A6iKXZir8bYhRVF0T7ScXKfq6ZQFl39AxxDy7SDEsvH8UYK/nlEV+XWf0Q69H5"
+        crossorigin="anonymous"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
                             </body></html>`;
 
 
