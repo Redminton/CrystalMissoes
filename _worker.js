@@ -4686,10 +4686,29 @@ var sistema = {
                         <li><a href="../about.html" class="nav-link px-2 text-white">Sobre</a></li>
                         <li><a href="#contato" class="nav-link px-2 text-white">Contato</a></li>
                     </ul>
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="/mostrar/?cat="">
                         <input type="search" class="form-control form-control-dark text-start"
                             placeholder="Pesquisar..." aria-label="Search">
                     </form>
+                    <script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita o envio padrão do formulário
+
+        var searchTerm = document.getElementById('searchInput').value.trim(); // Obtém o valor da pesquisa
+
+        // Verifica se há um termo de pesquisa válido
+        if (searchTerm !== '') {
+            // Define o novo valor para o atributo action
+            this.action = '/mostrar/?cat=' + encodeURIComponent(searchTerm);
+
+            // Submete o formulário com a ação modificada
+            this.submit();
+        } else {
+            // Se não houver termo de pesquisa válido, você pode tratar isso aqui
+            alert('Por favor, insira um termo de pesquisa válido.');
+        }
+    });
+</script>
 
                     <div class="text-end">
                         <button onclick="window.location.href='../login.html'" type="button" class="btn btn-warning">Minha
