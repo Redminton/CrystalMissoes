@@ -4683,7 +4683,7 @@ var sistema1 = {
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=brinco">Brincos</a></li>
                                 <li><a class="dropdown-item"
-                                        href="https://redminton.cloud/mostrar/?cat=gargantilha>Gargantilhas</a>
+                                        href="https://redminton.cloud/mostrar/?cat=gargantilha">Gargantilhas</a>
                                 </li>
                                 <li><a class="dropdown-item"
                                         href="https://redminton.cloud/mostrar/?cat=pulseira">Pulseiras</a>
@@ -4971,7 +4971,7 @@ var sistema1 = {
                             <p id="menor" class="card-text">${row[5]}</p>
                             <div class="text-center">
                                 <a href="produtoInfo.html?id=${row[0]}" class="btn btn-primary">Mais Informações</a>
-                            </div>
+                       </div>
                         </div>
                     </div>
                 </div>
